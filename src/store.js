@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import rootReducer from './reducers';
 
 const persistConfig = {
-    key: 'wsu_root',
+    key: 'react-storyblok_boilerplate_root',
     storage,
     blacklist: ['blogPage', 'blogFilter', 'casesPage', 'casesFilter'], // will not be persisted
 };

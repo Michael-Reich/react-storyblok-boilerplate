@@ -42,7 +42,7 @@ const KontaktForm = (props) => {
         </Col>
         {!props.plain_form && <Col lg={{span: 6, order: 2}} className={classes.col}>
             <div>
-                <img src="/images/wolfgang.jpg" alt="" className={classes.image}/>
+                <img src="//live.staticflickr.com/4561/38054606355_19e9c3d39a_3k.jpg" alt="" className={classes.image}/>
                 <div className={classes.div}>
                     <h2 className={classes.h2}>Lassen Sie sich beraten!</h2>
                     <Spacer/>

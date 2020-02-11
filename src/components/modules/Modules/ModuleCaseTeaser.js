@@ -28,7 +28,7 @@ const ModuleCaseTeaser = (props) => {
 
     const [cases, setCases] = useState(props.cases);
     useEffect(() => {
-        if (props.cases.length > 0) {
+        if (props.cases && props.cases.length > 0) {
             setCases(props.cases);
         }
     }, [props.cases]);
@@ -39,11 +39,11 @@ const ModuleCaseTeaser = (props) => {
 
     return <div className={`${marginClasses}`}>
         <Container fluid={module.is_full_width}>
-            <Carousel controls={false} className={classes.carousel} interval={null}>
+            {cases.length > 0 && <Carousel controls={false} className={classes.carousel} interval={null}>
                 {[...cases].splice(0, 3).map((item, index) => {
                     return <Carousel.Item key={index}><CaseItem item={item}/></Carousel.Item>;
                 })}
-            </Carousel>
+            </Carousel>}
         </Container>
     </div>;
 

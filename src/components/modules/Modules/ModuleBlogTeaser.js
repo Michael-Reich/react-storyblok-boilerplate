@@ -24,7 +24,7 @@ const ModuleBlogTeaser = (props) => {
     const sortFn = (a, b) => new Date(b.content.date) - new Date(a.content.date);
 
     useEffect(() => {
-        if (props.blog.length > 0) {
+        if (props.blog && props.blog.length > 0) {
             let tempBlog = [];
 
             tempBlog = props.blog;
@@ -43,13 +43,13 @@ const ModuleBlogTeaser = (props) => {
 
     return <div className={`${marginClasses}`}>
         <Container fluid={module.is_full_width}>
-            <Row className={'h-100'}>
+            {blog.length > 0 && <Row className={'h-100'}>
                 {[...blog].splice(0, 3).map((item, index) => {
                     return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
                         <Item item={item}/>
                     </Col>;
                 })}
-            </Row>
+            </Row>}
         </Container>
     </div>;
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 
+import {title} from '../../tools/strings';
 import SpecialPage from '../../components/common/SpecialPage';
 import HeadSpace from '../../components/common/HeadSpace';
 
 const Error404 = () => {
     return <div>
         <Helmet>
-            <title>404 - Not Found | TransformationRider</title>
+            <title>404 | {title}</title>
             <meta name="robots" content="noindex"/>
         </Helmet>
         <HeadSpace h={150}/>

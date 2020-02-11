@@ -1,7 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 
 export const Storyblok = new StoryblokClient({
-    accessToken: 'bRC5MCKEAhAefgZfOcsIuQtt',
+    accessToken: 'eFQZM8It621f6NjJixGG9wtt',
     cache: {
         clear: 'auto',
         type: 'memory'
