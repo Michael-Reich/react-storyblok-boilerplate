@@ -1,0 +1,34 @@
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1199px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 991px) {
+    .alice-carousel__prev-btn, .alice-carousel__next-btn {
+        display: none !important;
+    }
+    .alice-carousel__dots {
+        display: block !important;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: inherit;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 767px) {
+    .mt-5, .my-5 {
+        margin-top: 30px !important;
+    }
+    .mb-5, .my-5 {
+        margin-bottom: 30px !important;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 575px) {
+
+}

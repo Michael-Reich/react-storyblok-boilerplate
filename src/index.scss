@@ -1,0 +1,76 @@
+// Colors
+$primary: #499091;
+$grey: #c7c7c7;
+
+// Spacer
+$spacer: 2.125rem;
+
+// Font import
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
+@import url("https://use.typekit.net/vtf2cry.css");
+
+// Font overrides
+$font-family-sans-serif: "Aileron", Helvetica, Arial, sans-serif;
+$font-size-base: 1.125rem;
+$line-height-base: 1.61;
+$font-weight-base: 400;
+
+@import '~bootstrap/scss/bootstrap';
+
+@import 'styles/_responsive';
+
+body {
+    background-color: #ECE5E2;
+}
+
+.container {
+  max-width: 1280px;
+}
+
+.grecaptcha-badge {
+    display: none !important;
+}
+
+button:focus {
+  outline:0;
+}
+
+.hidden {
+    display: none;
+}
+
+// Bootstrap Class Overrides
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.form-check-input {
+    margin-top: 0;
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+}
+
+.carousel-indicators {
+    bottom: -20px;
+
+    li {
+        height: 16px;
+        width: 17px;
+        border-radius: 10px;
+        background-color: $primary;
+        overflow: hidden;
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .carousel-indicators {
+        bottom: -10px;
+    }
+}
