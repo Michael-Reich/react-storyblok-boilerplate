@@ -78,8 +78,8 @@ const textActive = {
 };
 
 export const buttons = {
-    secondary: secondary,
-    primary: primary,
-    text: text,
-    textActive: textActive,
+    secondary,
+    primary,
+    text,
+    textActive,
 };

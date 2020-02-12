@@ -40,9 +40,9 @@ const btn = {
 };
 
 export const forms = {
-    input: input,
-    label: label,
-    checkBox: checkBox,
-    dsgvo: dsgvo,
-    btn: btn,
+    input,
+    label,
+    checkBox,
+    dsgvo,
+    btn,
 };
