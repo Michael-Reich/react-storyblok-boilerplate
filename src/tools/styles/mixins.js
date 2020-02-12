@@ -1,4 +1,3 @@
-import {fontSizeMixins} from './fontSizeMixins';
 import {fonts} from './fonts';
 import {breakpoints} from './breakpoints';
 import {colors} from './colors';
@@ -126,15 +125,23 @@ const caption = {
 };
 
 const unboxed = {
-    ...fontSizeMixins.unboxed,
     color: 'inherit',
     fontFamily: fonts.primary,
     letterSpacing: 0,
     fontWeight: 'lighter',
+    fontSize: 26,
+    lineHeight: '38px',
+    [`@media (min-width: ${breakpoints.mdMin}px) and (max-width: ${breakpoints.mdMax}px)`]: {
+        fontSize: 22,
+        lineHeight: '30px',
+    },
+    [`@media (max-width: ${breakpoints.smMax}px)`]: {
+        fontSize: 18,
+        lineHeight: '26px',
+    },
 };
 
 const p = {
-    ...fontSizeMixins.boxed,
     fontFamily: fonts.primary,
     letterSpacing: 0,
     color: 'inherit',
@@ -147,6 +154,16 @@ const p = {
             color: colors.vibrate,
             textDecoration: 'none',
         },
+    },
+    fontSize: 20,
+    lineHeight: '28px',
+    [`@media (min-width: ${breakpoints.mdMin}px) and (max-width: ${breakpoints.mdMax}px)`]: {
+        fontSize: 18,
+        lineHeight: '26px',
+    },
+    [`@media (max-width: ${breakpoints.smMax}px)`]: {
+        fontSize: 16,
+        lineHeight: '26px',
     },
 };
 

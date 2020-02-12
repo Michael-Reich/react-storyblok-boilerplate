@@ -9,7 +9,7 @@ import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchCases} from '../../actions/cases';
 import {fetchCasesPage} from '../../actions/casesPage';
 import {setCasesPage} from '../../actions/casesFilter';
-import {mixins, colors, fontSizeMixins} from '../../tools/styles';
+import {mixins, colors} from '../../tools/styles';
 import Filter from './Filter';
 import Item from './Item';
 import Spacer from '../../components/common/Spacer';
@@ -20,11 +20,6 @@ import CustomPagination from '../../components/common/CustomPagination';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-    },
-    p: {
-        ...fontSizeMixins.unboxed,
-        fontStyle: 'italic',
-        color: colors.light,
     },
     pSearch: {
         ...mixins.p,

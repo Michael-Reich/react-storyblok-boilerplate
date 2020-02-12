@@ -9,7 +9,7 @@ import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage} from '../../actions/blogPage';
 import {fetchBlog} from '../../actions/blog';
 import {setBlogPage} from '../../actions/blogFilter';
-import {mixins, fontSizeMixins, colors} from '../../tools/styles';
+import {mixins, colors} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
 import Spacer from '../../components/common/Spacer';
@@ -20,11 +20,6 @@ import CustomPagination from '../../components/common/CustomPagination';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-    },
-    p: {
-        ...fontSizeMixins.unboxed,
-        fontStyle: 'italic',
-        color: colors.light,
     },
     pSearch: {
         ...mixins.p,

@@ -1,11 +1,11 @@
-import {fontSizeMixins} from './fontSizeMixins';
 import {fonts} from './fonts';
 import {tools} from './tools';
 import {breakpoints} from './breakpoints';
 import {colors} from './colors';
+import {mixins} from './mixins';
 
 const buttonDefaults = {
-    ...fontSizeMixins.h3,
+    ...mixins.h3,
     fontFamily: fonts.secondary,
     fontWeight: 'Bold',
     letterSpacing: 0,
