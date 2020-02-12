@@ -1,5 +1,6 @@
 // Colors
-$primary: red;
+$highlight: red;
+$primary: $highlight;
 $grey: #c7c7c7;
 
 // Spacer
@@ -61,7 +62,7 @@ a {
         height: 16px;
         width: 17px;
         border-radius: 10px;
-        background-color: $primary;
+        background-color: $highlight;
         overflow: hidden;
         border-top: none;
         border-bottom: none;
