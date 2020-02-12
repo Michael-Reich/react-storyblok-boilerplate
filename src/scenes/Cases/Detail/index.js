@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
 import {fetchSingleCase, fetchCases} from '../../../actions/cases';
-import {colors, mixins} from '../../../tools/styles';
+import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
 import {CustomRichText} from '../../../components/common/CustomRichText';
@@ -18,13 +18,13 @@ import KontaktForm from '../../../components/common/KontaktForm';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-        marginBottom: 15
+        marginBottom: 15,
     },
     h2: {
         ...mixins.h2,
     },
     text: {
-        marginTop: 30
+        marginTop: tools.margin,
     },
     caption: {
         ...mixins.caption,

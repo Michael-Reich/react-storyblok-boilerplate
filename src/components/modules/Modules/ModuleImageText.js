@@ -29,9 +29,9 @@ const ModuleImageText = (props) => {
             },
         },
         p: {
-            ...mixins.boxed,
+            ...mixins.p,
             color: 'inherit',
-            marginBottom: 30,
+            marginBottom: tools.margin,
             [`@media (max-width: ${breakpoints.mdMax}px)`]: {
                 marginBottom: 10,
             },

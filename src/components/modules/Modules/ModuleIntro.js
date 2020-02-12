@@ -14,8 +14,8 @@ import BackgroundImage from '../../common/BackgroundImage';
 
 const useStyles = createUseStyles({
     div: {
-        paddingTop: 30,
-        paddingBottom: 30,
+        paddingTop: tools.padding,
+        paddingBottom: tools.padding,
         backgroundColor: colors.muted,
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
             paddingBottom: 0,
@@ -26,7 +26,7 @@ const useStyles = createUseStyles({
         backgroundColor: colors.highlight,
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
             paddingBottom: 0,
-            paddingTop: 30,
+            paddingTop: tools.padding,
         },
     },
     smallDiv: {
@@ -45,7 +45,7 @@ const useStyles = createUseStyles({
     },
     p: {
         ...mixins.unboxed,
-        marginBottom: 30,
+        marginBottom: tools.margin,
         [`@media (max-width: ${breakpoints.mdMax}px)`]: {
             marginBottom: 10,
         },

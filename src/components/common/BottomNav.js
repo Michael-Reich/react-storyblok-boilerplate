@@ -27,7 +27,7 @@ const useStyles = createUseStyles({
     },
     col: {
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
-            marginBottom: 20,
+            marginBottom: tools.marginSmall,
         },
     }
 });

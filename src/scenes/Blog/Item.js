@@ -14,9 +14,11 @@ const useStyles = createUseStyles({
         overflow: 'hidden',
         backgroundColor: colors.light,
         height: '100%',
+        position: 'relative',
+        paddingBottom: 40,
     },
     text: {
-        padding: 30,
+        padding: tools.padding,
         textAlign: 'center',
     },
     caption: {
@@ -31,6 +33,13 @@ const useStyles = createUseStyles({
     image: {
         width: '100%',
         height: 200,
+    },
+    cta: {
+        position: 'absolute',
+        bottom: 30,
+        left: '50%',
+        width: '100%',
+        transform: 'translate(-50%, 0)'
     }
 });
 
@@ -55,7 +64,7 @@ const BlogItem = (props) => {
                 </div>
                 <Spacer/>
             </div>}
-            <Link to={`/blog/${item.slug}`}>
+            <Link to={`/blog/${item.slug}`} className={classes.cta}>
                 <Button variant={'secondary'}>Mehr erfahren</Button>
             </Link>
         </div>

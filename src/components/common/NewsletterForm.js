@@ -3,10 +3,11 @@ import {createUseStyles} from 'react-jss';
 
 import {colors, mixins} from '../../tools/styles';
 import GenericCleverreachForm from '../forms/GenericCleverreachForm';
+import {tools} from '../../tools/styles/tools';
 
 const useStyles = createUseStyles({
     div: {
-        padding: 30,
+        padding: tools.padding,
         backgroundColor: colors.light,
     },
     h2: {

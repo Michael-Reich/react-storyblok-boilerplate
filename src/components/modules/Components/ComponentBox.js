@@ -14,7 +14,7 @@ const ComponentBox = (props) => {
     const useStyles = createUseStyles({
         div: {
             color: colors.dark,
-            padding: 30,
+            padding: tools.padding,
             boxShadow: tools.boxShadow,
             borderRadius: tools.borderRadius,
             backgroundColor: colors.light,

@@ -2,21 +2,20 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {createUseStyles} from 'react-jss';
-import {Link} from 'react-router-dom';
 
 import GenericNetlifyForm from '../forms/GenericNetlifyForm';
-import {breakpoints, colors, mixins} from '../../tools/styles';
+import {breakpoints, colors, mixins, tools} from '../../tools/styles';
 import Spacer from './Spacer';
 import Button from './Button';
 
 const useStyles = createUseStyles({
     col: {
         [`@media (max-width: ${breakpoints.mdMax}px)`]: {
-            marginBottom: 30,
+            marginBottom: tools.marginSmall,
         },
     },
     div: {
-        padding: 30,
+        padding: tools.padding,
         backgroundColor: colors.light,
     },
     h2: {
@@ -52,7 +51,7 @@ const KontaktForm = (props) => {
                     </div>
                     <Spacer/>
                     <a href={'https://outlook.office365.com/owa/calendar/WSUBeratungsgesellschaftmbH1@wsu-beratung.de/bookings/s/uGsPPrxZm0eYDQNJQtgevA2'}
-                       target={'_blank'}><Button>Termin vereinbaren</Button></a>
+                       target={'_blank'}><Button variant={'secondary'}>Termin vereinbaren</Button></a>
                 </div>
             </div>
         </Col>}

@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {fetchBlog} from '../../../actions/blog';
 import {getMarginClasses} from '../../../tools/helper';
 import Item from '../../../scenes/Blog/Item';
+import {tools} from '../../../tools/styles';
 
 const ModuleBlogTeaser = (props) => {
 
@@ -45,7 +46,7 @@ const ModuleBlogTeaser = (props) => {
         <Container fluid={module.is_full_width}>
             {blog.length > 0 && <Row className={'h-100'}>
                 {[...blog].splice(0, 3).map((item, index) => {
-                    return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
+                    return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                         <Item item={item}/>
                     </Col>;
                 })}

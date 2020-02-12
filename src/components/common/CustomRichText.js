@@ -2,7 +2,7 @@ import React from 'react';
 import {createUseStyles} from 'react-jss';
 
 import {Storyblok} from '../../tools/Storyblok';
-import {colors, mixins} from '../../tools/styles';
+import {colors, mixins, tools} from '../../tools/styles';
 
 const createMarkup = (storyblokHTML) => {
     return {
@@ -24,12 +24,12 @@ const useStyles = createUseStyles({
         },
         '& h2': {
             ...mixins.h2,
-            marginTop: 30,
+            marginTop: tools.margin,
             marginBottom: 20,
         },
         '& h3': {
             ...mixins.h3,
-            marginTop: 30,
+            marginTop: tools.margin,
             marginBottom: 20,
         },
         '& blockquote': {

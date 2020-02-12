@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
 import {fetchSingleBlog, fetchBlog} from '../../../actions/blog';
-import {colors, mixins} from '../../../tools/styles';
+import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
 import {CustomRichText} from '../../../components/common/CustomRichText';
@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
         ...mixins.h2,
     },
     text: {
-        marginTop: 30
+        marginTop: tools.margin,
     },
     caption: {
         ...mixins.caption,
@@ -112,7 +112,7 @@ const BlogDetail = (props) => {
                             <Spacer/>
                             <Row>
                                 {[...other].splice(0, 3).map((itm, index) => {
-                                    return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
+                                    return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                         <Item item={itm}/>
                                     </Col>;
                                 })}

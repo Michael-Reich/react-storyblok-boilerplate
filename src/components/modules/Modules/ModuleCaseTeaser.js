@@ -7,10 +7,11 @@ import {createUseStyles} from 'react-jss';
 import {fetchCases} from '../../../actions/cases';
 import {getMarginClasses} from '../../../tools/helper';
 import CaseItem from '../../../scenes/Cases/Item';
+import {tools} from '../../../tools/styles';
 
 const useStyles = createUseStyles({
     carousel: {
-        marginBottom: 30,
+        marginBottom: tools.margin,
     },
 });
 

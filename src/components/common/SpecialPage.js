@@ -4,7 +4,7 @@ import {createUseStyles} from 'react-jss';
 import Container from 'react-bootstrap/Container';
 
 import Button from './Button';
-import {mixins} from '../../tools/styles';
+import {mixins, tools} from '../../tools/styles';
 import Spacer from './Spacer';
 
 const SpecialPage = (props) => {
@@ -26,8 +26,8 @@ const SpecialPage = (props) => {
         },
         unboxed: {
             ...mixins.unboxed,
-            marginTop: 30,
-            marginBottom: 30,
+            marginTop: tools.margin,
+            marginBottom: tools.margin,
         },
     });
 

@@ -106,7 +106,7 @@ const GenericCleverreachForm = (props) => {
             <Spacer/>
             <Row>
                 <Col>
-                    <Button className={classes.btn} type={'submit'} variant={'secondary'}>Newsletter
+                    <Button className={classes.btn} type={'submit'}>Newsletter
                         abonnieren!</Button>
                 </Col>
             </Row>

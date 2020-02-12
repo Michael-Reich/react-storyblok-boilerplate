@@ -10,7 +10,7 @@ import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage} from '../../actions/blogPage';
 import {fetchBlog} from '../../actions/blog';
 import {setBlogPage} from '../../actions/blogFilter';
-import {mixins} from '../../tools/styles';
+import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
 import Spacer from '../../components/common/Spacer';
@@ -109,7 +109,7 @@ const Blog = (props) => {
                 {filteredItems.length > 0 && <div>
                     <Row className={'h-100'}>
                         {[...filteredItems].splice((props.filter.page - 1) * props.filter.items_per_page, props.filter.items_per_page).map((itm, index) => {
-                            return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
+                            return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                 <Item item={itm}/>
                             </Col>;
                         })}

@@ -15,11 +15,11 @@ const useStyles = createUseStyles({
         borderRadius: tools.borderRadius,
         boxShadow: tools.boxShadow,
         overflow: 'hidden',
-        marginBottom: 30,
+        marginBottom: tools.margin,
         backgroundColor: colors.light,
     },
     text: {
-        padding: 30,
+        padding: tools.padding,
     },
     caption: {
         ...mixins.caption,

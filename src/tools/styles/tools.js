@@ -8,6 +8,10 @@ const border = `${borderWidth}px ${borderStyle} ${colors.highlight}`;
 const transitionDuration = '0.2s';
 const transitionTimingFunction = 'ease-in-out';
 const transition = `border,color,background-color ${transitionDuration} ${transitionTimingFunction}`;
+const padding = 30;
+const paddingSmall = 20;
+const margin = 30;
+const marginSmall = 20;
 
 export const tools = {
     boxShadow,
@@ -18,4 +22,8 @@ export const tools = {
     transitionDuration,
     transitionTimingFunction,
     transition,
+    padding,
+    paddingSmall,
+    margin,
+    marginSmall,
 };

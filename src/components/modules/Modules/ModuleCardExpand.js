@@ -17,7 +17,7 @@ const ModuleCardExpand = (props) => {
         div: {
             borderRadius: tools.borderRadius,
             boxShadow: tools.boxShadow,
-            marginBottom: 30,
+            marginBottom: tools.margin,
         },
         h2: {
             ...mixins.h2,
@@ -40,7 +40,7 @@ const ModuleCardExpand = (props) => {
             height: 'auto',
         },
         col: {
-            padding: 30,
+            padding: tools.padding,
         },
         p: {
             ...mixins.p,
