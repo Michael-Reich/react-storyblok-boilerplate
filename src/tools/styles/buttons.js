@@ -16,7 +16,7 @@ const buttonDefaults = {
     transition: tools.transition,
     borderRadius: tools.borderRadius,
     boxShadow: 'none',
-    border: `1px solid ${colors.vibrate}`,
+    border: `2px solid ${colors.vibrate}`,
     [`@media (max-width: ${breakpoints.mdMax}px)`]: {
         paddingTop: 10,
         paddingBottom: 10,

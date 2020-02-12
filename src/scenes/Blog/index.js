@@ -4,12 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {createUseStyles} from 'react-jss';
+import {Element, scroller} from 'react-scroll';
 
 import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage} from '../../actions/blogPage';
 import {fetchBlog} from '../../actions/blog';
 import {setBlogPage} from '../../actions/blogFilter';
-import {mixins, colors} from '../../tools/styles';
+import {mixins} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
 import Spacer from '../../components/common/Spacer';
@@ -77,6 +78,16 @@ const Blog = (props) => {
         }
     }, [props.page]);
 
+    const paginationOnClickHandler = (page) => {
+        scroller.scrollTo('scrollAnchor', {
+            duration: 500,
+            delay: 0,
+            offset: -113,
+            smooth: true,
+        });
+        props.setPage(page);
+    };
+
     return <div>
         <CustomHelmet metaFields={page.content ? page.content.metaFields : {}} page={page}/>
         {modules.length > 0 && <ModulesWrapper modules={modules}/>}
@@ -93,8 +104,9 @@ const Blog = (props) => {
 
             {!filteredItems.length ? <Row><Col>
                 <div className={classes.pSearch}>Wir können leider keine Blogeinträge finden.</div>
-            </Col></Row> : <div>{
-                filteredItems.length > 0 && <div>
+            </Col></Row> : <div>
+                <Element name="scrollAnchor"/>
+                {filteredItems.length > 0 && <div>
                     <Row className={'h-100'}>
                         {[...filteredItems].splice((props.filter.page - 1) * props.filter.items_per_page, props.filter.items_per_page).map((itm, index) => {
                             return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
@@ -105,10 +117,10 @@ const Blog = (props) => {
                     <Row><Col>
                         <CustomPagination max={Math.ceil(filteredItems.length / props.filter.items_per_page)}
                                           page={props.filter.page}
-                                          onClick={props.setPage}/>
+                                          onClick={paginationOnClickHandler}/>
                     </Col></Row>
-                </div>
-            }</div>}
+                </div>}
+            </div>}
             {!items.length && <CustomSpinner/>}
             <Spacer/>
         </Container>
