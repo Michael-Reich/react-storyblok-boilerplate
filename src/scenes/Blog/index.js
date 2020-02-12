@@ -9,7 +9,7 @@ import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage} from '../../actions/blogPage';
 import {fetchBlog} from '../../actions/blog';
 import {setBlogPage} from '../../actions/blogFilter';
-import {mixins, colors} from '../../tools/styles';
+import {mixins, fontSizeMixins, colors} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
 import Spacer from '../../components/common/Spacer';
@@ -22,7 +22,8 @@ const useStyles = createUseStyles({
         ...mixins.h1,
     },
     p: {
-        ...mixins.introItalic,
+        ...fontSizeMixins.unboxed,
+        fontStyle: 'italic',
         color: colors.light,
     },
     pSearch: {

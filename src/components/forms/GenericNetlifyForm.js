@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import NetlifyForm from 'react-netlify-form';
+import {createUseStyles} from 'react-jss';
 import Form from 'react-bootstrap/Form';
 import FormCheck from 'react-bootstrap/FormCheck';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import NetlifyForm from 'react-netlify-form';
-import {createUseStyles} from 'react-jss';
 
 import 'moment/locale/de.js';
 
@@ -94,8 +94,7 @@ const GenericNetlifyForm = (props) => {
                     <div className={classes.success}>Vielen Dank für Ihre Anfrage, wir melden uns schnellstmöglich bei
                         Ihnen.</div>
                     }
-                    {!loading && !success &&
-                    <div>
+                    {!loading && !success && <div>
                         <p className="hidden">
                             <label>Don’t fill this out if you're human: <input name="__bf"/></label>
                         </p>
@@ -137,15 +136,16 @@ const GenericNetlifyForm = (props) => {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <Form.Group controlId="dsgvo"
-                                            className={`${classes.dsgvo} ${checkboxActive ? '' : 'hidden'}`}>
+                                <Form.Group
+                                    className={`${classes.dsgvo} ${checkboxActive ? '' : 'hidden'}`}>
                                     <FormCheck>
-                                        <FormCheck.Input className={classes.checkBox} type="checkbox" style={{marginTop: 6}} required/>
-                                        <FormCheck.Label className={classes.checkBox} name={'dsgvo'} style={{marginLeft: 10}}>
+                                        <FormCheck.Input className={classes.checkBox} type="checkbox"
+                                                         style={{marginTop: 6}} required/>
+                                        <FormCheck.Label className={classes.checkBox} style={{marginLeft: 10}}>
                                             Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur
-                                                Beantwortung meiner Anfrage erhoben und verarbeitet werden. Detailierte
-                                                Informationen zum Umgang mit Nutzerdaten finden Sie in unserer <Link
-                                                    to={`/datenschutz`}>Datenschutzerklärung</Link>.*
+                                            Beantwortung meiner Anfrage erhoben und verarbeitet werden. Detailierte
+                                            Informationen zum Umgang mit Nutzerdaten finden Sie in unserer <Link
+                                            to={`/datenschutz`}>Datenschutzerklärung</Link>.*
                                         </FormCheck.Label>
                                     </FormCheck>
                                 </Form.Group>
@@ -158,8 +158,7 @@ const GenericNetlifyForm = (props) => {
                                 <Button variant={'secondary'} type={'submit'}>Kontakt aufnehmen</Button>
                             </Col>
                         </Row>
-                    </div>
-                    }
+                    </div>}
                     {recaptcha}
                 </div>
             )}

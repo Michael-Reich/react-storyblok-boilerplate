@@ -2,7 +2,7 @@ import React from 'react';
 import {createUseStyles} from 'react-jss';
 import {FaFacebookSquare, FaInstagram, FaLinkedin} from 'react-icons/fa';
 
-import {tools, colors, breakpoints} from '../../tools/styles';
+import {tools, colors} from '../../tools/styles';
 
 const SocialMediaLinks = (props) => {
     const useStyles = createUseStyles({
@@ -41,10 +41,10 @@ const SocialMediaLinks = (props) => {
 };
 
 SocialMediaLinks.defaultProps = {
-    size: 30,
-    className: '',
-    marginSide: 12,
     style: {},
+    className: '',
+    size: 30,
+    marginSide: 12,
 };
 
 export default SocialMediaLinks;

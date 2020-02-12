@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Link} from 'react-router-dom';
+import {createUseStyles} from 'react-jss';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import {createUseStyles} from 'react-jss';
 
 import {colors, fonts, mixins, tools, breakpoints} from '../../tools/styles';
 import Button from './Button';
@@ -37,15 +37,15 @@ const useStyles = createUseStyles({
             fontWeight: '400 !important',
             color: `${colors.dark}!important`,
             '&:hover': {
-                opacity: 0.7
+                opacity: 0.7,
             },
             '&:after': {
-                display: 'none'
+                display: 'none',
             },
             [`@media (max-width: ${breakpoints.lgMax}px)`]: {
                 paddingLeft: '5px !important',
                 paddingRight: '5px !important',
-                textAlign: 'center'
+                textAlign: 'center',
             },
         },
         '& .dropdown-menu': {
@@ -118,7 +118,7 @@ const useStyles = createUseStyles({
     },
     navBarInner: {
         marginTop: 15,
-        marginBottom: 10
+        marginBottom: 10,
     },
     logo: {
         marginRight: 70,
@@ -139,7 +139,6 @@ const TopNavBarBig = (props) => {
     const clickBurgerMenu = (expanded) => {
         setNavExpanded(expanded);
     };
-
     const linkClick = () => {
         setNavExpanded(false);
     };

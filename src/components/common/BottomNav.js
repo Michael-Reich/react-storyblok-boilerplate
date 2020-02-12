@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col';
 import {breakpoints, colors, mixins, tools} from '../../tools/styles';
 import NavLink from './NavLink';
 import DetailPagesContainer from './DetailPagesContainer';
-import {Route} from 'react-router-dom';
-import SimpleDetailPagesHub from './SimpleDetailPagesHub';
-import Button from './Button';
 
 const useStyles = createUseStyles({
     h3: {

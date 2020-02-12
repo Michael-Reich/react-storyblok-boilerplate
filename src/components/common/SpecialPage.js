@@ -33,17 +33,20 @@ const SpecialPage = (props) => {
 
     const classes = useStyles();
 
-    return <Container className={props.className}>
+    return <Container className={props.className} style={props.style}>
         <h1 className={classes.h1}>{caption}</h1>
         {text && <p className={classes.unboxed}>{text}</p>}
         <Spacer/>
-        <Link to={'/'}><Button variant={'primary'}>Zur Startseite</Button></Link>
+        <Link to={'/'}><Button>Zur Startseite</Button></Link>
         <Spacer/>
     </Container>;
 };
 
 SpecialPage.defaultProps = {
+    style: {},
     className: '',
+    text: '',
+    caption: '',
 };
 
 export default SpecialPage;

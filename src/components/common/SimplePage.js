@@ -11,7 +11,6 @@ const SimplePage = (props) => {
     const [modules, setModules] = useState([]);
     const [page, setPage] = useState({});
 
-
     useEffect(() => {
         if (!slug) {
             return;
@@ -31,7 +30,6 @@ const SimplePage = (props) => {
             if (item.slug === slug) {
                 setPage(item);
                 if (item.content && item.content.body) {
-                    console.log("modules", item.content.body);
                     setModules(item.content.body);
                 }
             }
