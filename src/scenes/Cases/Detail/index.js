@@ -29,7 +29,7 @@ const useStyles = createUseStyles({
     caption: {
         ...mixins.caption,
         marginBottom: 20,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
     image: {
         width: '100%',
@@ -92,7 +92,7 @@ const CaseDetail = (props) => {
             <BackgroundImage image={item.content.image} className={classes.image}>
                 <div className={classes.header}>
                     <Container>
-                        <Col md={{span: 12, offset: 0,}} style={{backgroundColor: colors.vibrate,
+                        <Col md={{span: 12, offset: 0,}} style={{backgroundColor: colors.highlight,
                             padding: 20,}}>
                             <div className={classes.headerCaption}>{item.content.subline}</div>
                             <div className={classes.h2}>{item.content.headline}</div>

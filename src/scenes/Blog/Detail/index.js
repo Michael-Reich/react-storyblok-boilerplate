@@ -29,7 +29,7 @@ const useStyles = createUseStyles({
     caption: {
         ...mixins.caption,
         marginBottom: 20,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
     image: {
         width: '100%',

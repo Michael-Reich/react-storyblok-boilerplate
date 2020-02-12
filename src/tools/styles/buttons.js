@@ -6,7 +6,7 @@ import {mixins} from './mixins';
 
 const buttonDefaults = {
     ...mixins.h3,
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.headline,
     fontWeight: 'Bold',
     letterSpacing: 0,
     paddingTop: 12,
@@ -16,7 +16,7 @@ const buttonDefaults = {
     transition: tools.transition,
     borderRadius: tools.borderRadius,
     boxShadow: 'none',
-    border: `2px solid ${colors.vibrate}`,
+    border: `2px solid ${colors.highlight}`,
     [`@media (max-width: ${breakpoints.mdMax}px)`]: {
         paddingTop: 10,
         paddingBottom: 10,
@@ -25,25 +25,26 @@ const buttonDefaults = {
     },
 };
 
+
 const secondary = {
     ...buttonDefaults,
-    color: colors.light,
-    backgroundColor: colors.vibrate,
+    color: colors.highlight,
+    backgroundColor: colors.light,
     transition: tools.transition,
     '&:hover': {
-        color: colors.dark,
-        backgroundColor: colors.light,
+        color: colors.light,
+        backgroundColor: colors.highlight,
     },
 };
 
 const primary = {
     ...buttonDefaults,
-    color: colors.vibrate,
-    backgroundColor: colors.light,
+    color: colors.light,
+    backgroundColor: colors.highlight,
     transition: tools.transition,
     '&:hover': {
-        color: colors.light,
-        backgroundColor: colors.vibrate,
+        color: colors.highlight,
+        backgroundColor: colors.light,
     },
 };
 
@@ -58,7 +59,7 @@ const text = {
     paddingRight: 15,
     '&:hover': {
         color: colors.light,
-        backgroundColor: colors.vibrate,
+        backgroundColor: colors.highlight,
     },
 };
 
@@ -66,14 +67,14 @@ const textActive = {
     ...buttonDefaults,
     border: 'none',
     boxShadow: 'none',
-    color: colors.vibrate,
+    color: colors.highlight,
     backgroundColor: 'transparent',
     transition: tools.transition,
     paddingLeft: 15,
     paddingRight: 15,
     '&:hover': {
         color: colors.light,
-        backgroundColor: colors.vibrate,
+        backgroundColor: colors.highlight,
     },
 };
 

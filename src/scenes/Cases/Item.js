@@ -61,7 +61,7 @@ const CaseItem = (props) => {
                     </div>
                     <Spacer/>
                     <Link to={`/cases/${item.slug}`}>
-                        <Button>Mehr erfahren</Button>
+                        <Button variant={'secondary'}>Mehr erfahren</Button>
                     </Link>
                     <CustomImage image={item.content.companyLogo}/>
                 </div>

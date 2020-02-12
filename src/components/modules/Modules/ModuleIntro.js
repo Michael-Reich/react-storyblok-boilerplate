@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
         },
     },
     coloredDiv: {
-        backgroundColor: colors.vibrate,
+        backgroundColor: colors.highlight,
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
             paddingBottom: 0,
             paddingTop: 30,
@@ -52,12 +52,12 @@ const useStyles = createUseStyles({
     },
     caption: {
         ...mixins.caption,
-        color: colors.vibrate,
+        color: colors.highlight,
         '&>a': {
             color: 'inherit',
             transition: tools.transition,
             '&:hover': {
-                color: colors.vibrate,
+                color: colors.highlight,
                 textDecoration: 'none',
             },
         },
@@ -133,7 +133,7 @@ const ModuleIntro = (props) => {
                 </Col>}
                 <Col md={{span: isSmall ? 8 : 7, order: isImageLeft ? 2 : 1, offset: isSmall ? 2 : 0}}>
                     <div className={classes.caption}
-                         style={{color: isColored ? colors.light : colors.vibrate,}}>{module.subline}</div>
+                         style={{color: isColored ? colors.light : colors.highlight,}}>{module.subline}</div>
                     <h1 className={classes.h1}
                         style={{color: isColored ? colors.light : colors.dark,}}>{module.headline}</h1>
                     <CustomRichText data={module.text} className={classes.p}

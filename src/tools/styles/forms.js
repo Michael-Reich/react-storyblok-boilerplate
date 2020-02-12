@@ -6,14 +6,14 @@ const input = {
     ...mixins.p,
     color: colors.dark,
     borderRadius: tools.borderRadius,
-    border: `1px solid ${colors.vibrate}`,
-    backgroundColor: 'white',
+    border: `1px solid ${colors.highlight}`,
+    backgroundColor: colors.white,
     marginBottom: 10,
     paddingLeft: 10,
     paddingRight: 10,
     transition: tools.transition,
     '&:focus': {
-        border: `2px solid ${colors.vibrate}`,
+        border: `2px solid ${colors.highlight}`,
         boxShadow: tools.boxShadow,
     },
 };

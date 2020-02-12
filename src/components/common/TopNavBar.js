@@ -19,11 +19,11 @@ const useStyles = createUseStyles({
         color: `${colors.dark}!important`,
         fontSize: 20,
         '&:hover': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
             textDecoration: 'none',
         },
         '&.active': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
         },
         '& + &': {
             marginLeft: 20,

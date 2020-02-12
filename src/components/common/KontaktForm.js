@@ -51,7 +51,8 @@ const KontaktForm = (props) => {
                         unterstützen können.
                     </div>
                     <Spacer/>
-                    <a href={'https://outlook.office365.com/owa/calendar/WSUBeratungsgesellschaftmbH1@wsu-beratung.de/bookings/s/uGsPPrxZm0eYDQNJQtgevA2'} target={'_blank'}><Button variant={'secondary'}>Termin vereinbaren</Button></a>
+                    <a href={'https://outlook.office365.com/owa/calendar/WSUBeratungsgesellschaftmbH1@wsu-beratung.de/bookings/s/uGsPPrxZm0eYDQNJQtgevA2'}
+                       target={'_blank'}><Button>Termin vereinbaren</Button></a>
                 </div>
             </div>
         </Col>}

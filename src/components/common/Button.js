@@ -6,10 +6,8 @@ import {buttons} from '../../tools/styles';
 const Button = (props) => {
 
     const useStyles = createUseStyles({
-        primaryButton: buttons.primary,
-        primaryButtonActive: buttons.secondary,
-        secondaryButton: buttons.secondary,
-        secondaryButtonActive: buttons.primary,
+        primary: buttons.primary,
+        secondary: buttons.secondary,
         textButton: buttons.text,
         textButtonActive: buttons.textActive,
     });
@@ -19,7 +17,7 @@ const Button = (props) => {
     switch (props.variant) {
         case 'secondary':
             return <button
-                className={`${props.isActive ? classes.secondaryButtonActive : classes.secondaryButton} ${props.className}`}
+                className={`${props.isActive ? classes.primary : classes.secondary} ${props.className}`}
                 type={props.type} onClick={props.onClick} style={props.style}>{props.children}</button>;
 
         case 'text':
@@ -29,7 +27,7 @@ const Button = (props) => {
 
         default:
             return <button
-                className={`${props.isActive ? classes.primaryButtonActive : classes.primaryButton} ${props.className}`}
+                className={`${props.isActive ? classes.secondary : classes.primary} ${props.className}`}
                 type={props.type} onClick={props.onClick} style={props.style}>{props.children}</button>;
     }
 

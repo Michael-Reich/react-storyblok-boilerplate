@@ -4,7 +4,7 @@ import {colors} from './colors';
 import {tools} from './tools';
 
 const h1 = {
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.headline,
     fontWeight: 800,
     letterSpacing: 0,
     margin: 0,
@@ -22,7 +22,7 @@ const h1 = {
 };
 
 const h2 = {
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.headline,
     fontWeight: 800,
     letterSpacing: 0,
     margin: 0,
@@ -42,7 +42,7 @@ const h2 = {
 const h3 = {
     color: 'inherit',
     fontWeight: 800,
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.headline,
     fontSize: 18,
     letterSpacing: 0,
     margin: 0,
@@ -58,49 +58,11 @@ const h3 = {
     },
 };
 
-const h5 = {
-    color: 'inherit',
-    fontWeight: 800,
-    fontFamily: fonts.secondary,
-    fontSize: 22,
-    letterSpacing: 0,
-    margin: 0,
-    padding: 0,
-    lineHeight: 1.5,
-    '&>a': {
-        color: colors.dark,
-        transition: tools.transition,
-        '&:hover': {
-            color: colors.vibrate,
-            textDecoration: 'none',
-        },
-    },
-};
-
-const h4 = {
-    color: 'inherit',
-    fontWeight: 800,
-    fontFamily: fonts.secondary,
-    fontSize: 32,
-    letterSpacing: 0,
-    margin: 0,
-    padding: 0,
-    lineHeight: '34px',
-    '&>a': {
-        color: colors.dark,
-        transition: tools.transition,
-        '&:hover': {
-            color: colors.vibrate,
-            textDecoration: 'none',
-        },
-    },
-};
-
 const caption = {
     color: 'inherit',
     letterSpacing: 0,
     fontSize: 18,
-    fontFamily: fonts.secondary,
+    fontFamily: fonts.headline,
     margin: 0,
     marginBottom: 10,
     padding: 0,
@@ -110,7 +72,7 @@ const caption = {
         color: colors.dark,
         transition: tools.transition,
         '&:hover': {
-            color: colors.vibrate,
+            color: colors.highlight,
             textDecoration: 'none',
         },
     },
@@ -126,7 +88,7 @@ const caption = {
 
 const unboxed = {
     color: 'inherit',
-    fontFamily: fonts.primary,
+    fontFamily: fonts.text,
     letterSpacing: 0,
     fontWeight: 'lighter',
     fontSize: 26,
@@ -142,16 +104,16 @@ const unboxed = {
 };
 
 const p = {
-    fontFamily: fonts.primary,
+    fontFamily: fonts.text,
     letterSpacing: 0,
     color: 'inherit',
     transition: tools.transition,
     fontWeight: 'lighter',
     '&>a': {
         transition: tools.transition,
-        color: colors.vibrate,
+        color: colors.highlight,
         '&:hover': {
-            color: colors.vibrate,
+            color: colors.highlight,
             textDecoration: 'none',
         },
     },
@@ -171,8 +133,6 @@ export const mixins = {
     h1,
     h2,
     h3,
-    h4,
-    h5,
     caption,
     unboxed,
     p,

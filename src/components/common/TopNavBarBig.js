@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
     navBar: {
         padding: 26,
         zIndex: 990,
-        fontFamily: fonts.secondary,
+        fontFamily: fonts.headline,
         fontWeight: 'bold',
         fontSize: 18,
         lineHeight: '27px',
@@ -88,7 +88,7 @@ const useStyles = createUseStyles({
             color: 'rgba(255,255,255,0.5)!important',
         },
         '&.active': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
         },
     },
     box: {
@@ -148,7 +148,7 @@ const TopNavBarBig = (props) => {
                    onToggle={(expanded) => clickBurgerMenu(expanded)}>
         <Container>
             <Link to={'/'} className={classes.logo}><img className={classes.logo} src={`/images/logo-green.png`} alt=""/></Link>
-            <Link to={'/kontakt'} className={'d-flex d-lg-none'}><Button variant={'primary'}>Kontakt aufnehmen</Button></Link>
+            <Link to={'/kontakt'} className={'d-flex d-lg-none'}><Button variant={'secondary'}>Kontakt aufnehmen</Button></Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse className={`justify-content-between align-items-center w-100`}>
                 <Nav className={`${classes.navBarInner} mx-auto`}>
@@ -188,7 +188,7 @@ const TopNavBarBig = (props) => {
                 </Nav>
             </Navbar.Collapse>
             <div className={`${classes.navBarLink} d-none d-lg-block`} style={{whiteSpace: 'nowrap'}}>
-                <Link to={'/kontakt'}><Button variant={'secondary'}>Kontakt aufnehmen</Button></Link>
+                <Link to={'/kontakt'}><Button>Kontakt aufnehmen</Button></Link>
             </div>
         </Container>
     </Navbar>;

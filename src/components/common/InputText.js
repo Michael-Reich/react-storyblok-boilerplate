@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
         transition: tools.transition,
         cursor: 'pointer',
         '&:hover': {
-            color: colors.vibrate,
+            color: colors.highlight,
         },
     },
     div: {

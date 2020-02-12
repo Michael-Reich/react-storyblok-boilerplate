@@ -70,7 +70,7 @@ const ComponentBox = (props) => {
 
 
         <CustomRichText data={module.text} className={classes.p}/>
-        <ModuleButton module={module} className={classes.button}/>
+        <ModuleButton module={module} className={classes.button} buttonProps={{variant: 'secondary'}}/>
     </div>;
 };
 

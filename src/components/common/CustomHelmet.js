@@ -17,7 +17,7 @@ const CustomHelmet = (props) => {
 
     return <div>
         <Helmet>
-            <meta name="theme-color" content={`${colors.vibrate}`}/>
+            <meta name="theme-color" content={`${colors.highlight}`}/>
             <title>{metaFields.title && `${metaFields.title || page.name} | ${title}`}</title>
             {metaFields.title && <meta name="title" content={`${metaFields.title || page.name}`}/>}
             {metaFields.title && <meta property="og:title" content={`${metaFields.title || page.name}`}/>}

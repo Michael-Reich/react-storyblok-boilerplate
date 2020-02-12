@@ -1,7 +1,7 @@
-const primary = '"Aileron", sans-serif';
-const secondary = '"Montserrat", sans-serif';
+const text = '"Aileron", sans-serif';
+const headline = '"Montserrat", sans-serif';
 
 export const fonts = {
-    primary,
-    secondary,
+    text,
+    headline,
 };

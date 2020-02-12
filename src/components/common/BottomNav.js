@@ -21,7 +21,7 @@ const useStyles = createUseStyles({
         display: 'block',
         lineHeight: 1.3,
         '&:hover': {
-            color: colors.vibrate,
+            color: colors.highlight,
             textDecoration: 'none',
         },
     },

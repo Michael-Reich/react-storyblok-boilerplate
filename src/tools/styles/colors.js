@@ -1,15 +1,13 @@
 const dark = '#3C3C3C';
-const darkGrey = '#3C3C3C';
+const white = 'white';
 const light = '#F8F9FA';
 const muted = '#ECE5E2';
-const vibrate = 'red';
-const contrast = '#499091';
+const highlight = 'red';
 
 export const colors = {
     dark,
-    darkGrey,
     light,
     muted,
-    vibrate,
-    contrast,
+    highlight,
+    white,
 };

@@ -38,12 +38,12 @@ const ModuleImageText = (props) => {
         },
         caption: {
             ...mixins.caption,
-            color: colors.vibrate,
+            color: colors.highlight,
             '&>a': {
                 color: 'inherit',
                 transition: tools.transition,
                 '&:hover': {
-                    color: colors.vibrate,
+                    color: colors.highlight,
                     textDecoration: 'none',
                 },
             },
@@ -76,9 +76,9 @@ const ModuleImageText = (props) => {
                     <Col md={{span: 6, order: module.imageLeft ? 1 : 2,}} xs={{span: 12, order: 2}}>
                         <div className={classes.caption}>{module.subline}</div>
                         <h2 className={classes.h2}
-                            style={{color: module.isDark ? colors.vibrate : colors.dark}}>{module.headline}</h2>
+                            style={{color: module.isDark ? colors.highlight : colors.dark}}>{module.headline}</h2>
                         <CustomRichText data={module.text} className={classes.p}/>
-                        <ModuleButton buttonProps={{variant: 'secondary'}} module={module}/>
+                        <ModuleButton module={module}/>
                     </Col>
                     <Col md={{span: 5, order: module.imageLeft ? 2 : 1,}} xs={{span: 12, order: 1}}>
                         <CustomImage image={module.mainImage} className={classes.image}/>

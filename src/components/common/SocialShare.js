@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
             color: colors.dark,
         },
         '&:hover': {
-            backgroundColor: colors.vibrate,
+            backgroundColor: colors.highlight,
         },
         '& a:hover': {
             color: colors.light,

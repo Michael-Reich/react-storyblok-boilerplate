@@ -151,7 +151,7 @@ const GenericNetlifyForm = (props) => {
                         <Row>
                             <Col>
                                 <div data-netlify-recaptcha="true"/>
-                                <Button variant={'secondary'} type={'submit'}>Kontakt aufnehmen</Button>
+                                <Button type={'submit'}>Kontakt aufnehmen</Button>
                             </Col>
                         </Row>
                     </div>}

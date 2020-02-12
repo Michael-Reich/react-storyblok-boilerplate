@@ -56,7 +56,7 @@ const BlogItem = (props) => {
                 <Spacer/>
             </div>}
             <Link to={`/blog/${item.slug}`}>
-                <Button>Mehr erfahren</Button>
+                <Button variant={'secondary'}>Mehr erfahren</Button>
             </Link>
         </div>
 

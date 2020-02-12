@@ -18,7 +18,7 @@ const SocialMediaLinks = (props) => {
                 marginLeft: props.marginSide,
             },
             '&:hover': {
-                color: colors.vibrate,
+                color: colors.highlight,
             },
         },
     });

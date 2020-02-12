@@ -25,12 +25,12 @@ const ModuleCardExpand = (props) => {
         },
         caption: {
             ...mixins.caption,
-            color: colors.vibrate,
+            color: colors.highlight,
             '&>a': {
                 color: 'inherit',
                 transition: tools.transition,
                 '&:hover': {
-                    color: colors.vibrate,
+                    color: colors.highlight,
                     textDecoration: 'none',
                 },
             },
@@ -50,7 +50,7 @@ const ModuleCardExpand = (props) => {
         },
         isOpen: {
             color: colors.light,
-            backgroundColor: colors.vibrate,
+            backgroundColor: colors.highlight,
             '& $h2,$caption,$p': {
                 color: colors.light,
             },

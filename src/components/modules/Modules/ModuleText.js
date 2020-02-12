@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
     },
     caption: {
         ...mixins.caption,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
 });
 
