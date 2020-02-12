@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
 import {fetchSingleCase, fetchCases} from '../../../actions/cases';
-import {colors, mixins, tools} from '../../../tools/styles';
+import {colors, mixins} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
 import {CustomRichText} from '../../../components/common/CustomRichText';
@@ -22,9 +22,6 @@ const useStyles = createUseStyles({
     },
     h2: {
         ...mixins.h2,
-    },
-    text: {
-        marginTop: tools.margin,
     },
     caption: {
         ...mixins.caption,
@@ -47,7 +44,10 @@ const useStyles = createUseStyles({
     headerCaption: {
         ...mixins.caption,
         color: colors.light,
-    }
+    },
+    unboxed: {
+        ...mixins.unboxed,
+    },
 });
 
 const CaseDetail = (props) => {
@@ -92,8 +92,10 @@ const CaseDetail = (props) => {
             <BackgroundImage image={item.content.image} className={classes.image}>
                 <div className={classes.header}>
                     <Container>
-                        <Col md={{span: 12, offset: 0,}} style={{backgroundColor: colors.highlight,
-                            padding: 20,}}>
+                        <Col md={{span: 12, offset: 0,}} style={{
+                            backgroundColor: colors.highlight,
+                            padding: 20,
+                        }}>
                             <div className={classes.headerCaption}>{item.content.subline}</div>
                             <div className={classes.h2}>{item.content.headline}</div>
                         </Col>
@@ -110,7 +112,7 @@ const CaseDetail = (props) => {
                         <Spacer/>
                         <div className={classes.caption}>{item.content.subline}</div>
                         <h1 className={classes.h1}>{item.content.headline}</h1>
-                        <CustomRichText data={item.content.content}/>
+                        <CustomRichText data={item.content.content} className={classes.unboxed}/>
                     </Col>
                 </Row>
                 <Spacer/>

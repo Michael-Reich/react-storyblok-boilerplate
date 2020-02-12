@@ -23,9 +23,6 @@ const useStyles = createUseStyles({
     h2: {
         ...mixins.h2,
     },
-    text: {
-        marginTop: tools.margin,
-    },
     caption: {
         ...mixins.caption,
         marginBottom: 20,
@@ -35,6 +32,9 @@ const useStyles = createUseStyles({
         width: '100%',
         maxHeight: 500,
         height: '50vh',
+    },
+    unboxed: {
+        ...mixins.unboxed,
     },
 });
 
@@ -91,7 +91,7 @@ const BlogDetail = (props) => {
                         <Spacer/>
                         <div className={classes.caption}>{item.content.subline}</div>
                         <h1 className={classes.h1}>{item.content.headline}</h1>
-                        <CustomRichText data={item.content.content}/>
+                        <CustomRichText data={item.content.content} className={classes.unboxed}/>
                         <Spacer/>
                         <NewsletterForm headline={'Verpassen Sie nichts mehr!'}/>
                     </Col>
