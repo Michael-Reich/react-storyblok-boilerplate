@@ -11,9 +11,10 @@ const input = {
     marginBottom: 10,
     paddingLeft: 10,
     paddingRight: 10,
+    transition: tools.transition,
     '&:focus': {
-        border: `1px solid ${colors.vibrate}`,
-        boxShadow: 'none',
+        border: `2px solid ${colors.vibrate}`,
+        boxShadow: tools.boxShadow,
     },
 };
 

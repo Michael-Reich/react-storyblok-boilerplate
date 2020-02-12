@@ -1,4 +1,4 @@
-export const getMarginClasses = (module, key = 'margin') => {
+const getMarginClasses = (module, key = 'margin') => {
     let temp = '';
     if (module && module[key]) {
         if (module[key].top) {
@@ -11,7 +11,7 @@ export const getMarginClasses = (module, key = 'margin') => {
     return temp;
 };
 
-export const getBootstrapColClasses = (module, key = 'box_bootstrap_classes') => {
+const getBootstrapColClasses = (module, key = 'box_bootstrap_classes') => {
     let temp = '';
     if (module && module[key]) {
         if (module[key].xsmall) {
@@ -33,3 +33,8 @@ export const getBootstrapColClasses = (module, key = 'box_bootstrap_classes') =>
     return temp;
 };
 
+
+export {
+    getMarginClasses,
+    getBootstrapColClasses,
+}

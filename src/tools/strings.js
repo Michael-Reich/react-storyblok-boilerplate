@@ -1,1 +1,5 @@
-export const title = 'Boilerplate';
+const title = 'Boilerplate';
+
+export {
+    title,
+}
