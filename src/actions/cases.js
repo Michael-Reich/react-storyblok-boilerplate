@@ -3,10 +3,6 @@ import {Storyblok, StoryblokVersion} from '../tools/Storyblok';
 export const FETCH_CASES = 'FETCH_CASES';
 export const FETCH_SINGLE_CASE = 'FETCH_SINGLE_CASE';
 
-/**
- * CASES
- */
-
 
 export const fetchCases = () => {
     const request = Storyblok

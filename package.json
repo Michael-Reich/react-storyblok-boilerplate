@@ -1,5 +1,5 @@
 {
-  "name": "jo",
+  "name": "react-storyblok-boilerplate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,6 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "node-sass": "^4.13.0",
-    "rc-datepicker": "^5.0.14",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.12.0",
@@ -28,8 +27,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
-    "storyblok-js-client": "^2.0.12",
-    "storyblok-react": "^0.0.10"
+    "storyblok-js-client": "^2.0.12"
   },
   "scripts": {
     "start": "react-scripts start",

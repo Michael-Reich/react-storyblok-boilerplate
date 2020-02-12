@@ -15,9 +15,9 @@ $font-size-base: 1.125rem;
 $line-height-base: 1.61;
 $font-weight-base: 400;
 
-@import '~bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
-@import 'styles/_responsive';
+@import 'responsive';
 
 body {
     background-color: #ECE5E2;

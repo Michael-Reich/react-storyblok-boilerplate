@@ -7,10 +7,6 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import 'moment/locale/de.js';
-
-import 'rc-datepicker/lib/style.css';
-
 import Button from '../../components/common/Button';
 import CustomSpinner from '../../components/common/CustomSpinner';
 import {forms, mixins} from '../../tools/styles';
