@@ -12,7 +12,6 @@ import SimpleDetailPagesHub from '../components/common/SimpleDetailPagesHub';
 
 const Routing = (props) => {
 
-    console.log("process",process);
     return <Switch>
         <Route path="/blog/:slug" component={BlogDetail}/>
         <Route path="/blog" component={Blog}/>

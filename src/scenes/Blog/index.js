@@ -7,10 +7,7 @@ import {createUseStyles} from 'react-jss';
 import {Element, scroller} from 'react-scroll';
 
 import CustomSpinner from '../../components/common/CustomSpinner';
-import {fetchBlogPage} from '../../actions/blogPage';
-import {fetchBlog} from '../../actions/blog';
-import {setBlogPage} from '../../actions/blogFilter';
-import {fetchBlogFilteredItems} from '../../actions/blogFilteredItems';
+import {fetchBlog, fetchBlogPage, setBlogPage, fetchBlogFilteredItems} from '../../actions/blog';
 import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
@@ -32,42 +29,37 @@ const Blog = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        props.fetchItems();
         props.fetchPage();
     }, [props.location]);
 
-    const [filteredItems, setFilteredItems] = useState([]);
     const [page, setPage] = useState({});
+    const [filter, setFilter] = useState({});
+    const [items, setItems] = useState([]);
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
-        if (props.items.length > 0) {
-            if (props.filter.filter && !props.filter.filter.text) {
-                setFilteredItems(props.items);
+        setFilter(props.entity.filter);
+    }, [props.entity.filter]);
+
+    useEffect(() => {
+        if (props.entity.page && props.entity.page.length > 0) {
+            setPage(props.entity.page[0]);
+            if (props.entity.page[0].content && props.entity.page[0].content.body) {
+                setModules(props.entity.page[0].content.body);
             }
         }
-    }, [props.items, props.filter]);
+    }, [props.entity.page]);
 
     useEffect(() => {
-        if (props.filter.filter.text) {
-            props.fetchFilteredItems(props.filter.filter.text);
-        }
-    }, [props.filter.filter.text]);
+        setItems(props.entity.filteredItems);
+    }, [props.entity.filteredItems]);
+
 
     useEffect(() => {
-        if (props.filter.filter && props.filter.filter.text) {
-            setFilteredItems(props.filteredItems);
+        if (filter.filter) {
+            props.fetchFilteredItems(filter.filter.text);
         }
-    }, [props.filteredItems, props.filter]);
-
-    useEffect(() => {
-        if (props.page.length > 0) {
-            setPage(props.page[0]);
-            if (props.page[0].content && props.page[0].content.body) {
-                setModules(props.page[0].content.body);
-            }
-        }
-    }, [props.page]);
+    }, [filter.filter]);
 
     const paginationOnClickHandler = (page) => {
         scroller.scrollTo('scrollAnchor', {
@@ -88,26 +80,26 @@ const Blog = (props) => {
                 <Col md={9}>
                     <h1 className={classes.h1}>{page.content.headline}</h1>
                     <Spacer/>
-                    {page.content.hasSearch && <Filter filter={props.filter} pageSize={page.content.pageSize}/>}
+                    {page.content.hasSearch && <Filter filter={filter.filter} pageSize={page.content.pageSize}/>}
                     <Spacer/>
                 </Col>
             </Row>}
 
-            {!filteredItems.length ? <Row><Col>
+            {!items.length ? <Row><Col>
                 <CustomSpinner/>
             </Col></Row> : <div>
                 <Element name="scrollAnchor"/>
-                {filteredItems.length > 0 && <div>
+                {items.length > 0 && <div>
                     <Row className={'h-100'}>
-                        {[...filteredItems].splice((props.filter.page - 1) * props.filter.items_per_page, props.filter.items_per_page).map((itm, index) => {
+                        {[...items].splice((filter.page - 1) * filter.items_per_page, filter.items_per_page).map((itm, index) => {
                             return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                 <Item item={itm}/>
                             </Col>;
                         })}
                     </Row>
                     <Row><Col>
-                        <CustomPagination max={Math.ceil(filteredItems.length / props.filter.items_per_page)}
-                                          page={props.filter.page}
+                        <CustomPagination max={Math.ceil(items.length / filter.items_per_page)}
+                                          page={filter.page}
                                           onClick={paginationOnClickHandler}/>
                     </Col></Row>
                 </div>}
@@ -119,17 +111,11 @@ const Blog = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.blog,
-        filter: state.blogFilter,
-        filteredItems: state.blogFilteredItems,
-        page: state.blogPage,
+        entity: state.blog,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchItems: () => {
-            dispatch(fetchBlog());
-        },
         fetchFilteredItems: (search_term) => {
             dispatch(fetchBlogFilteredItems(search_term));
         },
