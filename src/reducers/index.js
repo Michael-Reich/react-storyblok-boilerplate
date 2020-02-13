@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import blog from './blog';
 import blogPage from './blogPage';
 import blogFilter from './blogFilter';
+import blogFilteredItems from './blogFilteredItems';
 import cases from './cases';
 import casesPage from './casesPage';
 import casesFilter from './casesFilter';
@@ -12,6 +13,7 @@ export default combineReducers({
     blog,
     blogPage,
     blogFilter,
+    blogFilteredItems,
     cases,
     casesPage,
     casesFilter,

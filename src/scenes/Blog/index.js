@@ -10,6 +10,7 @@ import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage} from '../../actions/blogPage';
 import {fetchBlog} from '../../actions/blog';
 import {setBlogPage} from '../../actions/blogFilter';
+import {fetchBlogFilteredItems} from '../../actions/blogFilteredItems';
 import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
@@ -35,39 +36,29 @@ const Blog = (props) => {
         props.fetchPage();
     }, [props.location]);
 
-    const [items, setItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [page, setPage] = useState({});
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
         if (props.items.length > 0) {
-            setItems(props.items);
+            if (props.filter.filter && !props.filter.filter.text) {
+                setFilteredItems(props.items);
+            }
         }
-    }, [props.items]);
+    }, [props.items, props.filter]);
 
     useEffect(() => {
-        const newFiltered = [];
+        if (props.filter.filter.text) {
+            props.fetchFilteredItems(props.filter.filter.text);
+        }
+    }, [props.filter.filter.text]);
 
-        [...items].map(itm => {
-            if (props.filter.filter.text) {
-                if (
-                    (!itm.name || itm.name.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.subline || itm.content.subline.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.headline || itm.content.headline.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.previewText || itm.content.previewText.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                ) {
-                    return;
-                }
-            }
-            newFiltered.push(itm);
-        });
-
-        setFilteredItems(newFiltered);
-    }, [items, props.filter]);
+    useEffect(() => {
+        if (props.filter.filter && props.filter.filter.text) {
+            setFilteredItems(props.filteredItems);
+        }
+    }, [props.filteredItems, props.filter]);
 
     useEffect(() => {
         if (props.page.length > 0) {
@@ -103,7 +94,7 @@ const Blog = (props) => {
             </Row>}
 
             {!filteredItems.length ? <Row><Col>
-                <div className={classes.pSearch}>Wir können leider keine Blogeinträge finden.</div>
+                <CustomSpinner/>
             </Col></Row> : <div>
                 <Element name="scrollAnchor"/>
                 {filteredItems.length > 0 && <div>
@@ -121,7 +112,6 @@ const Blog = (props) => {
                     </Col></Row>
                 </div>}
             </div>}
-            {!items.length && <CustomSpinner/>}
             <Spacer/>
         </Container>
     </div>;
@@ -131,6 +121,7 @@ const mapStateToProps = (state) => {
     return {
         items: state.blog,
         filter: state.blogFilter,
+        filteredItems: state.blogFilteredItems,
         page: state.blogPage,
     };
 };
@@ -138,6 +129,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchItems: () => {
             dispatch(fetchBlog());
+        },
+        fetchFilteredItems: (search_term) => {
+            dispatch(fetchBlogFilteredItems(search_term));
         },
         fetchPage: () => {
             dispatch(fetchBlogPage());
