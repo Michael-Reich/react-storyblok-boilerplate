@@ -6,7 +6,7 @@ import {
     SET_BLOG_FILTER_ITEMS_PER_PAGE,
     FETCH_BLOG_FILTERED_ITEMS,
     FETCH_BLOG_PAGE
-} from '../actions/blog';
+} from '../actiontypes/blog';
 
 const ITEMS_PER_PAGE_FOR_SNAP = 1000;
 
