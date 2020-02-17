@@ -7,7 +7,7 @@ import {createUseStyles} from 'react-jss';
 import {Element, scroller} from 'react-scroll';
 
 import CustomSpinner from '../../components/common/CustomSpinner';
-import {fetchBlog, fetchBlogPage, setBlogPage, fetchBlogFilteredItems} from '../../actions/blog';
+import {fetchBlogPage, setBlogPage} from '../../actions/blog';
 import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
@@ -118,9 +118,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchFilteredItems: (search_term) => {
-            dispatch(fetchBlogFilteredItems(search_term));
-        },
         fetchFilteredItemsRequested: (search_term) => {
             dispatch({type: 'FETCH_BLOG_FILTERED_ITEMS_REQUESTED', payload: {search_term: search_term}})
         },

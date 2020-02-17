@@ -5,7 +5,6 @@ import {
     SET_BLOG_FILTER,
     SET_BLOG_PAGE,
     SET_BLOG_FILTER_ITEMS_PER_PAGE,
-    FETCH_BLOG_FILTERED_ITEMS,
     FETCH_BLOG_PAGE,
     FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED
 } from '../actiontypes/blog';
@@ -49,22 +48,6 @@ export const setBlogPage = (page) => ({
     type: SET_BLOG_PAGE,
     payload: page,
 });
-
-
-export const fetchBlogFilteredItems = (search_term) => {
-    const request = Storyblok
-        .getAll('cdn/stories', {
-            starts_with: 'blog',
-            is_startpage: false,
-            search_term: search_term,
-            version: StoryblokVersion,
-        });
-
-    return {
-        type: FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED,
-        payload: request
-    };
-};
 
 export const fetchBlogPage = () => {
     const request = Storyblok
