@@ -57,7 +57,9 @@ const Blog = (props) => {
 
     useEffect(() => {
         if (filter.filter) {
-            props.fetchFilteredItems(filter.filter.text);
+            // props.dispatch({type: 'FETCH_BLOG_FILTERED_ITEMS_REQUESTED', payload: {search_term: filter.filter.text}})
+            // props.fetchFilteredItems(filter.filter.text);
+            props.fetchFilteredItemsRequested(filter.filter.text);
         }
     }, [filter.filter]);
 
@@ -118,6 +120,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchFilteredItems: (search_term) => {
             dispatch(fetchBlogFilteredItems(search_term));
+        },
+        fetchFilteredItemsRequested: (search_term) => {
+            dispatch({type: 'FETCH_BLOG_FILTERED_ITEMS_REQUESTED', payload: {search_term: search_term}})
         },
         fetchPage: () => {
             dispatch(fetchBlogPage());

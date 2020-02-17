@@ -5,7 +5,7 @@ import {
     SET_BLOG_PAGE,
     SET_BLOG_FILTER_ITEMS_PER_PAGE,
     FETCH_BLOG_FILTERED_ITEMS,
-    FETCH_BLOG_PAGE
+    FETCH_BLOG_PAGE, FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED
 } from '../actiontypes/blog';
 
 const ITEMS_PER_PAGE_FOR_SNAP = 1000;
@@ -37,6 +37,17 @@ const blog = (state = defaultState, action) => {
                 newState.filteredItems = action.payload;
             }
             return newState;
+
+
+
+        case FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED:
+            console.log("hi", action);
+            if (action.payload) {
+                newState.filteredItems = action.payload;
+            }
+            return newState;
+
+
 
         case FETCH_SINGLE_BLOG:
             if (action.payload && action.payload.data && action.payload.data.story) {
