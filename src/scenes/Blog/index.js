@@ -34,7 +34,9 @@ const Blog = (props) => {
 
     const [page, setPage] = useState({});
     const [filter, setFilter] = useState({});
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState({});
+    const [lastRequestState, setLastRequestState] = useState({});
+    const [isRequestOngoing, setIsRequestOngoing] = useState(false);
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
@@ -53,6 +55,14 @@ const Blog = (props) => {
     useEffect(() => {
         setItems(props.entity.filteredItems);
     }, [props.entity.filteredItems]);
+
+    useEffect(() => {
+        setLastRequestState(props.entity.lastRequestState);
+    }, [props.entity.lastRequestState]);
+
+    useEffect(() => {
+        setIsRequestOngoing(props.entity.isRequestOngoing);
+    }, [props.entity.isRequestOngoing]);
 
 
     useEffect(() => {
@@ -82,14 +92,16 @@ const Blog = (props) => {
                 <Col md={9}>
                     <h1 className={classes.h1}>{page.content.headline}</h1>
                     <Spacer/>
-                    {page.content.hasSearch && <Filter filter={filter.filter} pageSize={page.content.pageSize}/>}
+                    {page.content.hasSearch && <Filter filter={filter.filter} pageSize={page.content.pageSize} />}
                     <Spacer/>
                 </Col>
             </Row>}
 
-            {!items.length ? <Row><Col>
-                <CustomSpinner/>
-            </Col></Row> : <div>
+            {isRequestOngoing && <Row><Col>
+                <CustomSpinner/><Spacer/>
+            </Col></Row>}
+
+            {items && <div>
                 <Element name="scrollAnchor"/>
                 {items.length > 0 && <div>
                     <Row className={'h-100'}>

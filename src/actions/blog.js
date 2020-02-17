@@ -6,7 +6,6 @@ import {
     SET_BLOG_PAGE,
     SET_BLOG_FILTER_ITEMS_PER_PAGE,
     FETCH_BLOG_PAGE,
-    FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED
 } from '../actiontypes/blog';
 
 export const fetchBlog = () => {

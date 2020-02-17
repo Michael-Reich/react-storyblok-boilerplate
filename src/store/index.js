@@ -6,13 +6,13 @@ import {persistStore, persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
 import createSagaMiddleware from 'redux-saga'
 
-import helloSaga from '../sagas'
+import rootSaga from '../sagas'
 import rootReducer from '../reducers';
 
 const persistConfig = {
     key: 'react-storyblok_boilerplate_root',
     storage,
-    blacklist: ['blogPage', 'blogFilter', 'casesPage', 'casesFilter'], // will not be persisted
+    blacklist: [], // will not be persisted
 };
 
 
@@ -27,8 +27,6 @@ export const store = createStore(persistedReducer, composeWithDevTools(
     // other store enhancers if any
 ));
 
-sagaMiddleware.run(helloSaga)
-
-export const action = type => store.dispatch({type})
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);

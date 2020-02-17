@@ -17,10 +17,6 @@ const BlogFilter = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        console.log('props.filter', props.filter);
-    }, [props.filter]);
-
-    useEffect(() => {
         const newPageSize = parseInt(props.pageSize, 10);
         if (newPageSize > 0) {
             props.setFilterItemsPerPage(newPageSize);
@@ -43,11 +39,9 @@ const BlogFilter = (props) => {
 
     return <div className={props.className} style={props.style}>
         <Form onSubmit={(e) => e.preventDefault()}>
-            <Form.Group>
                 <InputText className={classes.p} type="text" value={props.filter.text}
                            onChange={changeTextHandler}
                            placeholder={'Suche starten'}/>
-            </Form.Group>
         </Form>
     </div>;
 };

@@ -52,7 +52,8 @@ const BlogDetail = (props) => {
 
     useEffect(() => {
         const tempOther = [];
-        props.items.map((itm) => {
+
+        props.entity.items.map((itm) => {
             if (itm.slug === props.match.params.slug) {
                 setItem(itm);
             } else {
@@ -71,7 +72,7 @@ const BlogDetail = (props) => {
         });
 
         setOther(newOther);
-    }, [props.items]);
+    }, [props.entity.items]);
 
     return <div>
         <CustomHelmet metaFields={item.content ? item.content.metaFields : {}} page={item}/>
@@ -127,9 +128,10 @@ const BlogDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.blog,
+        entity: state.blog,
     };
 };
+
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleItem: (slug) => {

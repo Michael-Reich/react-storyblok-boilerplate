@@ -5,13 +5,18 @@ import {
     SET_BLOG_PAGE,
     SET_BLOG_FILTER_ITEMS_PER_PAGE,
     FETCH_BLOG_FILTERED_ITEMS,
-    FETCH_BLOG_PAGE, FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED, FETCH_BLOG_FILTERED_ITEMS_FAILED
+    FETCH_BLOG_PAGE,
+    FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED,
+    FETCH_BLOG_FILTERED_ITEMS_FAILED,
+    FETCH_BLOG_FILTERED_ITEMS_REQUESTED
 } from '../actiontypes/blog';
 
 const ITEMS_PER_PAGE_FOR_SNAP = 1000;
 
 const defaultState = {
     items: [],
+    lastRequestState: {},
+    isRequestOngoing: false,
     filteredItems: [],
     filter: {
         filter: {text: ''},
@@ -43,12 +48,19 @@ const blog = (state = defaultState, action) => {
         case FETCH_BLOG_FILTERED_ITEMS_SUCCEEDED:
             if (action.payload) {
                 newState.filteredItems = action.payload;
+                newState.lastRequestState = { success: true, message: '' };
+                newState.isRequestOngoing = false;
             }
             return newState;
+
         case FETCH_BLOG_FILTERED_ITEMS_FAILED:
-            console.warn("FETCH_BLOG_FILTERED_ITEMS_FAILED failed", action);
+            newState.lastRequestState = { success: false, message: action.payload };
+            newState.isRequestOngoing = false;
             return newState;
 
+        case FETCH_BLOG_FILTERED_ITEMS_REQUESTED:
+            newState.isRequestOngoing = true;
+            return newState;
 
 
         case FETCH_SINGLE_BLOG:
