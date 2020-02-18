@@ -4,9 +4,10 @@ import Carousel from 'react-bootstrap/Carousel';
 import {connect} from 'react-redux';
 import {createUseStyles} from 'react-jss';
 
-import {fetchCases} from '../../../actions/cases';
+import {entityName} from '../../../entities/cases';
+import {fetchItems} from '../../../actions/cases';
 import {getMarginClasses} from '../../../tools/helper';
-import CaseItem from '../../../scenes/Cases/Item';
+import Item from '../../../scenes/Cases/Item';
 import {tools} from '../../../tools/styles';
 
 const useStyles = createUseStyles({
@@ -27,22 +28,22 @@ const ModuleCaseTeaser = (props) => {
         }
     }, [props.module]);
 
-    const [cases, setCases] = useState(props.cases);
+    const [items, setItems] = useState(props.items);
     useEffect(() => {
-        if (props.cases && props.cases.length > 0) {
-            setCases(props.cases);
+        if (props.items && props.items.length > 0) {
+            setItems(props.items);
         }
-    }, [props.cases]);
+    }, [props.items]);
 
     useEffect(() => {
-        props.fetchCases();
+        props.fetchItems();
     }, [props.match]);
 
     return <div className={`${marginClasses}`}>
         <Container fluid={module.is_full_width}>
-            {cases.length > 0 && <Carousel controls={false} className={classes.carousel} interval={null}>
-                {[...cases].splice(0, 3).map((item, index) => {
-                    return <Carousel.Item key={index}><CaseItem item={item}/></Carousel.Item>;
+            {items.length > 0 && <Carousel controls={false} className={classes.carousel} interval={null}>
+                {[...items].splice(0, 3).map((itm, index) => {
+                    return <Carousel.Item key={index}><Item item={itm}/></Carousel.Item>;
                 })}
             </Carousel>}
         </Container>
@@ -52,19 +53,19 @@ const ModuleCaseTeaser = (props) => {
 
 ModuleCaseTeaser.defaultProps = {
     module: {},
-    cases: [],
+    items: [],
 };
 
 const mapStateToProps = (state) => {
     return {
-        cases: state.cases,
+        items: state[entityName],
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCases: () => {
-            dispatch(fetchCases());
+        fetchItems: () => {
+            dispatch(fetchItems());
         },
     };
 };

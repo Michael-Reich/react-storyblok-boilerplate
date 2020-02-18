@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
-import {fetchSingleCase, fetchCases} from '../../../actions/cases';
+import {entityName} from '../../../entities/cases';
+import {fetchSingleItem, fetchItems} from '../../../actions/cases';
 import {colors, mixins} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
@@ -59,14 +60,16 @@ const CaseDetail = (props) => {
         props.fetchItems();
     }, [props.match.params]);
 
-    const [item, setItems] = useState({});
+    const [item, setItem] = useState({});
     const [other, setOther] = useState([]);
 
     useEffect(() => {
         const tempOther = [];
-        props.items.map((itm) => {
+
+        props.entity.items.map((itm) => {
+            console.log("itm", itm);
             if (itm.slug === props.match.params.slug) {
-                setItems(itm);
+                setItem(itm);
             } else {
                 tempOther.push(itm);
             }
@@ -83,7 +86,7 @@ const CaseDetail = (props) => {
         });
 
         setOther(newOther);
-    }, [props.items]);
+    }, [props.entity.items]);
 
     return <div>
         <CustomHelmet metaFields={item.content ? item.content.metaFields : {}} page={item}/>
@@ -148,16 +151,16 @@ const CaseDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.cases,
+        entity: state[entityName],
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleItem: (slug) => {
-            dispatch(fetchSingleCase(slug));
+            dispatch(fetchSingleItem(slug));
         },
         fetchItems: () => {
-            dispatch(fetchCases());
+            dispatch(fetchItems());
         },
     };
 };
