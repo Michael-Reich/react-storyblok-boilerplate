@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
 import {breakpoints, colors, mixins, tools} from '../../../tools/styles';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import CustomImage from '../../common/CustomImage';
 import ModuleWrapper from '../ModuleWrapper';
 import {getMarginClasses} from '../../../tools/helper';

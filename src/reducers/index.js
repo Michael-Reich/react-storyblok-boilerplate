@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
+
 import blog from './blog';
 import cases from './cases';
 import pages from './pages';

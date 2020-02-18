@@ -33,11 +33,9 @@ const CasesFilter = (props) => {
 
     return <div className={props.className} style={props.style}>
         <Form onSubmit={(e) => e.preventDefault()}>
-            <Form.Group>
-                <InputText className={classes.p} type="text" value={props.filter.text}
-                           onChange={changeTextHandler}
-                           placeholder={'Suche starten'}/>
-            </Form.Group>
+            <InputText className={classes.p} type="text" value={props.filter.text}
+                       onChange={changeTextHandler}
+                       placeholder={'Suche starten'}/>
         </Form></div>;
 };
 

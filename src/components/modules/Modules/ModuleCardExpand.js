@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import {colors, mixins, tools} from '../../../tools/styles';
 import Button from '../../common/Button';
 import CustomImage from '../../common/CustomImage';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import {getMarginClasses} from '../../../tools/helper';
 
 const ModuleCardExpand = (props) => {

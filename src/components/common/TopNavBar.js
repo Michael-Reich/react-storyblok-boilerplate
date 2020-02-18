@@ -5,8 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import {mixins, tools} from '../../tools/styles';
-import {colors, breakpoints} from '../../tools/styles';
+import {mixins, tools, colors, breakpoints} from '../../tools/styles';
 import Button from './Button';
 
 const useStyles = createUseStyles({

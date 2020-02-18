@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {breakpoints, colors, mixins, tools} from '../../../tools/styles';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import CustomImage from '../../common/CustomImage';
 import {getMarginClasses} from '../../../tools/helper';
 import ModuleButton from './ModuleButton';

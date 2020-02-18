@@ -1,9 +1,8 @@
 import React from 'react';
 import {createUseStyles} from 'react-jss';
 
-import {colors, mixins} from '../../tools/styles';
+import {colors, mixins, tools} from '../../tools/styles';
 import GenericCleverreachForm from '../forms/GenericCleverreachForm';
-import {tools} from '../../tools/styles/tools';
 
 const useStyles = createUseStyles({
     div: {
