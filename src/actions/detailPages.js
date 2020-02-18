@@ -1,9 +1,7 @@
 import {Storyblok, StoryblokVersion} from '../tools/Storyblok';
+import {FETCH_ITEMS, FETCH_SINGLE_ITEM} from '../actiontypes/detailPages';
 
-export const FETCH_SINGLE_DETAIL_PAGE = 'FETCH_SINGLE_DETAIL_PAGE';
-export const FETCH_DETAIL_PAGES = 'FETCH_DETAIL_PAGES';
-
-export const fetchDetailPages = (slug) => {
+export const fetchItems = (slug) => {
     const request = Storyblok
         .getAll(`cdn/stories`, {
             starts_with: slug,
@@ -11,19 +9,19 @@ export const fetchDetailPages = (slug) => {
             resolve_links: 'url',
         });
     return {
-        type: FETCH_DETAIL_PAGES,
+        type: FETCH_ITEMS,
         payload: request,
     };
 };
 
-export const fetchSingleDetailPage = (parentSlug, slug) => {
+export const fetchSingleItem = (parentSlug, slug) => {
     const request = Storyblok
         .get(`cdn/stories/${parentSlug}/${slug}`, {
             version: StoryblokVersion,
             resolve_links: 'url',
         });
     return {
-        type: FETCH_SINGLE_DETAIL_PAGE,
+        type: FETCH_SINGLE_ITEM,
         payload: request,
     };
 };
