@@ -1,15 +1,15 @@
 import {Storyblok, StoryblokVersion} from '../tools/Storyblok';
+import {entitySlug} from '../entities/pages';
+import {FETCH_SINGLE_ITEM} from '../actiontypes/pages';
 
-export const FETCH_SINGLE_PAGE = 'FETCH_SINGLE_PAGE';
-
-export const fetchSinglePage = (slug) => {
+export const fetchSingleItem = (slug) => {
     const request = Storyblok
-        .get(`cdn/stories/pages/${slug}`, {
+        .get(`cdn/stories/${entitySlug}/${slug}`, {
             version: StoryblokVersion,
             resolve_links: 'url',
         });
     return {
-        type: FETCH_SINGLE_PAGE,
+        type: FETCH_SINGLE_ITEM,
         payload: request
     };
 };

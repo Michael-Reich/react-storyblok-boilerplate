@@ -14,23 +14,23 @@ export const fetchItems = () => {
         .getAll('cdn/stories', {
             starts_with: entitySlug,
             is_startpage: false,
-            version: StoryblokVersion
+            version: StoryblokVersion,
         });
 
     return {
         type: FETCH_ITEMS,
-        payload: request
+        payload: request,
     };
 };
 
 export const fetchSingleItem = (slug) => {
     const request = Storyblok
         .get(`cdn/stories/${entitySlug}/${slug}`, {
-            version: StoryblokVersion
+            version: StoryblokVersion,
         });
     return {
         type: FETCH_SINGLE_ITEM,
-        payload: request
+        payload: request,
     };
 };
 

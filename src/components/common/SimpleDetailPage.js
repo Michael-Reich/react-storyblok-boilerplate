@@ -1,22 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
+import {fetchSingleItem} from '../../actions/detailPages';
+import {entitySlug} from '../../entities/detailPages';
 import ModulesWrapper from '../../components/modules/ModulesWrapper';
 import CustomHelmet from '../../components/common/CustomHelmet';
-import {fetchSingleDetailPage} from '../../actions/detailPages';
 
 const SimpleDetailPage = (props) => {
 
     const [parentSlug, setParentSlug] = useState(props.parentSlug);
     const [slug, setSlug] = useState('');
     const [modules, setModules] = useState({});
-    const [page, setPage] = useState({});
+    const [pageData, setPageData] = useState({});
 
     useEffect(() => {
         if (!parentSlug || !slug) {
             return;
         }
-        props.fetchSingleDetailPage(parentSlug, slug);
+        props.fetchSingleItem(parentSlug, slug);
     }, [slug, parentSlug]);
 
     useEffect(() => {
@@ -34,17 +35,17 @@ const SimpleDetailPage = (props) => {
         if (!parentSlug || !slug) {
             return;
         }
-        if (parentSlug && slug && props.detailPages[parentSlug] && props.detailPages[parentSlug][slug]) {
-            setPage(props.detailPages[parentSlug][slug]);
-            if (props.detailPages[parentSlug][slug] && props.detailPages[parentSlug][slug].content && props.detailPages[parentSlug][slug].content.body) {
-                console.log("modules", props.detailPages[parentSlug][slug].content.body);
-                setModules(props.detailPages[parentSlug][slug].content.body);
+        if (parentSlug && slug && props.items[parentSlug] && props.items[parentSlug][slug]) {
+            setPageData(props.items[parentSlug][slug]);
+            if (props.items[parentSlug][slug] && props.items[parentSlug][slug].content && props.items[parentSlug][slug].content.body) {
+                console.log("modules", props.items[parentSlug][slug].content.body);
+                setModules(props.items[parentSlug][slug].content.body);
             }
         }
-    }, [props.detailPages, parentSlug, slug]);
+    }, [props.items, parentSlug, slug]);
 
     return <div>
-        <CustomHelmet metaFields={page.content ? page.content.metaFields : {}} page={page}/>
+        <CustomHelmet metaFields={pageData.content ? pageData.content.metaFields : {}} page={pageData}/>
         {modules.length > 0 && <ModulesWrapper modules={modules}/>}
     </div>;
 };
@@ -56,13 +57,13 @@ SimpleDetailPage.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        detailPages: state.detailPages,
+        items: state[entitySlug],
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSingleDetailPage: (parentSlug, slug) => {
-            dispatch(fetchSingleDetailPage(parentSlug, slug));
+        fetchSingleItem: (parentSlug, slug) => {
+            dispatch(fetchSingleItem(parentSlug, slug));
         },
     };
 };

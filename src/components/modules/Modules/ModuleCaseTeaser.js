@@ -58,7 +58,7 @@ ModuleCaseTeaser.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        items: state[entityName],
+        items: state[entityName].items,
     };
 };
 

@@ -19,7 +19,7 @@ import NewsletterForm from '../../../components/common/NewsletterForm';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-        marginBottom: 15
+        marginBottom: 15,
     },
     h2: {
         ...mixins.h2,
