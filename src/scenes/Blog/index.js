@@ -7,8 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {entityName} from '../../entities/blog';
-import {fetchPageData, setPageNumber} from '../../actions/blog';
-import {FETCH_FILTERED_ITEMS_REQUESTED} from '../../actiontypes/blog';
+import {fetchPageData, setPageNumber, fetchFilteredItemsRequested} from '../../actions/blog';
 import Item from './Item';
 import Filter from './Filter';
 import {mixins, tools} from '../../tools/styles';
@@ -135,7 +134,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchFilteredItemsRequested: (search_term) => {
-            dispatch({type: FETCH_FILTERED_ITEMS_REQUESTED, payload: {search_term: search_term}});
+            dispatch(fetchFilteredItemsRequested(search_term));
         },
         fetchPageData: () => {
             dispatch(fetchPageData());

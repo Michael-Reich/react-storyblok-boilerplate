@@ -7,11 +7,10 @@ import {createUseStyles} from 'react-jss';
 import {Element, scroller} from 'react-scroll';
 
 import {entityName} from '../../entities/cases';
-import {fetchPageData, setPageNumber} from '../../actions/cases';
-import {FETCH_FILTERED_ITEMS_REQUESTED} from '../../actiontypes/cases';
+import {fetchPageData, setPageNumber, fetchFilteredItemsRequested} from '../../actions/cases';
 import Filter from './Filter';
 import Item from './Item';
-import {mixins, tools} from '../../tools/styles';
+import {mixins} from '../../tools/styles';
 import CustomSpinner from '../../components/common/CustomSpinner';
 import Spacer from '../../components/common/Spacer';
 import CustomHelmet from '../../components/common/CustomHelmet';
@@ -136,7 +135,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchFilteredItemsRequested: (search_term) => {
-            dispatch({type: FETCH_FILTERED_ITEMS_REQUESTED, payload: {search_term: search_term}});
+            dispatch(fetchFilteredItemsRequested(search_term));
         },
         fetchPageData: () => {
             dispatch(fetchPageData());
