@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col';
 import {breakpoints, colors, mixins, tools} from '../../tools/styles';
 import NavLink from './NavLink';
 import DetailPagesContainer from './DetailPagesContainer';
-import {Route} from 'react-router-dom';
-import SimpleDetailPagesHub from './SimpleDetailPagesHub';
-import Button from './Button';
 
 const useStyles = createUseStyles({
     h3: {
@@ -24,13 +21,13 @@ const useStyles = createUseStyles({
         display: 'block',
         lineHeight: 1.3,
         '&:hover': {
-            color: colors.vibrate,
+            color: colors.highlight,
             textDecoration: 'none',
         },
     },
     col: {
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
-            marginBottom: 20,
+            marginBottom: tools.marginSmall,
         },
     }
 });

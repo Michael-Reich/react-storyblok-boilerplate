@@ -5,11 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
-import {fetchSingleCase, fetchCases} from '../../../actions/cases';
+import {entityName} from '../../../entities/cases';
+import {fetchSingleItem, fetchItems} from '../../../actions/cases';
 import {colors, mixins} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
-import {CustomRichText} from '../../../components/common/CustomRichText';
+import CustomRichText from '../../../components/common/CustomRichText';
 import Spacer from '../../../components/common/Spacer';
 import Item from '../Item';
 import BackgroundImage from '../../../components/common/BackgroundImage';
@@ -18,18 +19,15 @@ import KontaktForm from '../../../components/common/KontaktForm';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-        marginBottom: 15
+        marginBottom: 15,
     },
     h2: {
         ...mixins.h2,
     },
-    text: {
-        marginTop: 30
-    },
     caption: {
         ...mixins.caption,
         marginBottom: 20,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
     image: {
         width: '100%',
@@ -47,7 +45,10 @@ const useStyles = createUseStyles({
     headerCaption: {
         ...mixins.caption,
         color: colors.light,
-    }
+    },
+    unboxed: {
+        ...mixins.unboxed,
+    },
 });
 
 const CaseDetail = (props) => {
@@ -59,14 +60,15 @@ const CaseDetail = (props) => {
         props.fetchItems();
     }, [props.match.params]);
 
-    const [item, setItems] = useState({});
+    const [item, setItem] = useState({});
     const [other, setOther] = useState([]);
 
     useEffect(() => {
         const tempOther = [];
-        props.items.map((itm) => {
+
+        props.entity.items.map((itm) => {
             if (itm.slug === props.match.params.slug) {
-                setItems(itm);
+                setItem(itm);
             } else {
                 tempOther.push(itm);
             }
@@ -83,7 +85,7 @@ const CaseDetail = (props) => {
         });
 
         setOther(newOther);
-    }, [props.items]);
+    }, [props.entity.items]);
 
     return <div>
         <CustomHelmet metaFields={item.content ? item.content.metaFields : {}} page={item}/>
@@ -92,8 +94,10 @@ const CaseDetail = (props) => {
             <BackgroundImage image={item.content.image} className={classes.image}>
                 <div className={classes.header}>
                     <Container>
-                        <Col md={{span: 12, offset: 0,}} style={{backgroundColor: colors.vibrate,
-                            padding: 20,}}>
+                        <Col md={{span: 12, offset: 0,}} style={{
+                            backgroundColor: colors.highlight,
+                            padding: 20,
+                        }}>
                             <div className={classes.headerCaption}>{item.content.subline}</div>
                             <div className={classes.h2}>{item.content.headline}</div>
                         </Col>
@@ -110,7 +114,7 @@ const CaseDetail = (props) => {
                         <Spacer/>
                         <div className={classes.caption}>{item.content.subline}</div>
                         <h1 className={classes.h1}>{item.content.headline}</h1>
-                        <CustomRichText data={item.content.content}/>
+                        <CustomRichText data={item.content.content} className={classes.unboxed}/>
                     </Col>
                 </Row>
                 <Spacer/>
@@ -146,16 +150,16 @@ const CaseDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.cases,
+        entity: state[entityName],
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleItem: (slug) => {
-            dispatch(fetchSingleCase(slug));
+            dispatch(fetchSingleItem(slug));
         },
         fetchItems: () => {
-            dispatch(fetchCases());
+            dispatch(fetchItems());
         },
     };
 };

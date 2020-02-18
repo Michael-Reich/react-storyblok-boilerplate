@@ -1,13 +1,13 @@
-import {FETCH_SINGLE_DETAIL_PAGE, FETCH_DETAIL_PAGES} from '../actions/detailPages';
+import {FETCH_SINGLE_ITEM, FETCH_ITEMS} from '../actiontypes/detailPages';
 
 const defaultState = {};
 
-const detailPages = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     const newState = {...state};
 
     switch (action.type) {
-        case FETCH_SINGLE_DETAIL_PAGE:
+        case FETCH_SINGLE_ITEM:
             try {
                 const parts = action.payload.data.story.full_slug.split('/');
                 if (!newState[parts[0]]) {
@@ -19,7 +19,7 @@ const detailPages = (state = defaultState, action) => {
             }
             return newState;
 
-        case FETCH_DETAIL_PAGES:
+        case FETCH_ITEMS:
             try {
                 if (typeof action.payload !== 'undefined' && action.payload.constructor === Array) {
                     action.payload.map(item => {
@@ -39,4 +39,4 @@ const detailPages = (state = defaultState, action) => {
     }
 };
 
-export default detailPages;
+export default reducer;

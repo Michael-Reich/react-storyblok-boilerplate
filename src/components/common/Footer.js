@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {FaStar} from 'react-icons/fa';
 
-import {breakpoints, colors, mixins} from '../../tools/styles';
+import {breakpoints, colors, mixins, tools} from '../../tools/styles';
 import BottomNav from './BottomNav';
 import Spacer from './Spacer';
 import SocialMediaLinks from './SocialMediaLinks';
@@ -15,8 +15,8 @@ const useStyles = createUseStyles({
     footer: {
         backgroundColor: colors.dark,
         color: colors.light,
-        paddingBottom: 30,
-        paddingTop: 30,
+        paddingBottom: tools.padding,
+        paddingTop: tools.padding,
     },
     p: {
         ...mixins.p,
@@ -25,7 +25,7 @@ const useStyles = createUseStyles({
     },
     bottomNav: {
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
-            marginTop: 20,
+            marginTop: tools.marginSmall,
         },
     },
     logo: {

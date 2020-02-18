@@ -1,12 +1,12 @@
 import React from 'react';
+import {createUseStyles} from 'react-jss';
+import {Link} from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import {createUseStyles} from 'react-jss';
 
-import {breakpoints, colors, mixins, tools} from '../../tools/styles';
-import {Link} from 'react-router-dom';
+import {mixins, tools, colors, breakpoints} from '../../tools/styles';
 import Button from './Button';
-import Container from 'react-bootstrap/Container';
 
 const useStyles = createUseStyles({
     div: {
@@ -18,18 +18,18 @@ const useStyles = createUseStyles({
         color: `${colors.dark}!important`,
         fontSize: 20,
         '&:hover': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
             textDecoration: 'none',
         },
         '&.active': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
         },
         '& + &': {
             marginLeft: 20,
             [`@media (max-width: ${breakpoints.mdMax}px)`]: {
                 marginLeft: 0,
             },
-        }
+        },
     },
 });
 
@@ -61,7 +61,6 @@ const TopNavBar = () => {
                 </Nav>
             </Navbar.Collapse>
         </Container>
-
     </Navbar>;
 };
 

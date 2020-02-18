@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import {colors, mixins, tools} from '../../../tools/styles';
 import Button from '../../common/Button';
 import CustomImage from '../../common/CustomImage';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import {getMarginClasses} from '../../../tools/helper';
 
 const ModuleCardExpand = (props) => {
@@ -17,7 +17,7 @@ const ModuleCardExpand = (props) => {
         div: {
             borderRadius: tools.borderRadius,
             boxShadow: tools.boxShadow,
-            marginBottom: 30,
+            marginBottom: tools.margin,
         },
         h2: {
             ...mixins.h2,
@@ -25,12 +25,12 @@ const ModuleCardExpand = (props) => {
         },
         caption: {
             ...mixins.caption,
-            color: colors.vibrate,
+            color: colors.highlight,
             '&>a': {
                 color: 'inherit',
                 transition: tools.transition,
                 '&:hover': {
-                    color: colors.vibrate,
+                    color: colors.highlight,
                     textDecoration: 'none',
                 },
             },
@@ -40,7 +40,7 @@ const ModuleCardExpand = (props) => {
             height: 'auto',
         },
         col: {
-            padding: 30,
+            padding: tools.padding,
         },
         p: {
             ...mixins.p,
@@ -50,7 +50,7 @@ const ModuleCardExpand = (props) => {
         },
         isOpen: {
             color: colors.light,
-            backgroundColor: colors.vibrate,
+            backgroundColor: colors.highlight,
             '& $h2,$caption,$p': {
                 color: colors.light,
             },

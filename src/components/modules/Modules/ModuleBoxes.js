@@ -25,12 +25,12 @@ const ModuleBoxes = (props) => {
         },
         caption: {
             ...mixins.caption,
-            color: colors.vibrate,
+            color: colors.highlight,
             '&>a': {
                 color: 'inherit',
                 transition: tools.transition,
                 '&:hover': {
-                    color: colors.vibrate,
+                    color: colors.highlight,
                     textDecoration: 'none',
                 },
             },

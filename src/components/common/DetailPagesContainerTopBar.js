@@ -3,14 +3,14 @@ import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import {fetchDetailPages} from '../../actions/detailPages';
+import {fetchItems} from '../../actions/detailPages';
 
 const DetailPagesContainerTopBar = (props) => {
     useEffect(() => {
         if (!props.slug) {
             return;
         }
-        props.fetchDetailPages(props.slug);
+        props.fetchItems(props.slug);
     }, [props.match.params, props.slug]);
 
     const [pages, setPages] = useState([]);
@@ -57,8 +57,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchDetailPages: (slug) => {
-            dispatch(fetchDetailPages(slug));
+        fetchItems: (slug) => {
+            dispatch(fetchItems(slug));
         },
     };
 };

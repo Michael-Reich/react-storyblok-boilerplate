@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import {breakpoints, colors, mixins, tools} from '../../../tools/styles';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import CustomImage from '../../common/CustomImage';
 import {getMarginClasses} from '../../../tools/helper';
 import ModuleButton from './ModuleButton';
@@ -14,7 +14,7 @@ const ComponentBox = (props) => {
     const useStyles = createUseStyles({
         div: {
             color: colors.dark,
-            padding: 30,
+            padding: tools.padding,
             boxShadow: tools.boxShadow,
             borderRadius: tools.borderRadius,
             backgroundColor: colors.light,
@@ -70,7 +70,7 @@ const ComponentBox = (props) => {
 
 
         <CustomRichText data={module.text} className={classes.p}/>
-        <ModuleButton module={module} className={classes.button}/>
+        <ModuleButton module={module} className={classes.button} buttonProps={{variant: 'secondary'}}/>
     </div>;
 };
 

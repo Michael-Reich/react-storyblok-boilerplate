@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
 import {breakpoints, colors, mixins, tools} from '../../../tools/styles';
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import CustomImage from '../../common/CustomImage';
 import ModuleWrapper from '../ModuleWrapper';
 import {getMarginClasses} from '../../../tools/helper';
@@ -14,8 +14,8 @@ import BackgroundImage from '../../common/BackgroundImage';
 
 const useStyles = createUseStyles({
     div: {
-        paddingTop: 30,
-        paddingBottom: 30,
+        paddingTop: tools.padding,
+        paddingBottom: tools.padding,
         backgroundColor: colors.muted,
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
             paddingBottom: 0,
@@ -23,10 +23,10 @@ const useStyles = createUseStyles({
         },
     },
     coloredDiv: {
-        backgroundColor: colors.vibrate,
+        backgroundColor: colors.highlight,
         [`@media (max-width: ${breakpoints.smMax}px)`]: {
             paddingBottom: 0,
-            paddingTop: 30,
+            paddingTop: tools.padding,
         },
     },
     smallDiv: {
@@ -45,19 +45,19 @@ const useStyles = createUseStyles({
     },
     p: {
         ...mixins.unboxed,
-        marginBottom: 30,
+        marginBottom: tools.margin,
         [`@media (max-width: ${breakpoints.mdMax}px)`]: {
             marginBottom: 10,
         },
     },
     caption: {
         ...mixins.caption,
-        color: colors.vibrate,
+        color: colors.highlight,
         '&>a': {
             color: 'inherit',
             transition: tools.transition,
             '&:hover': {
-                color: colors.vibrate,
+                color: colors.highlight,
                 textDecoration: 'none',
             },
         },
@@ -133,7 +133,7 @@ const ModuleIntro = (props) => {
                 </Col>}
                 <Col md={{span: isSmall ? 8 : 7, order: isImageLeft ? 2 : 1, offset: isSmall ? 2 : 0}}>
                     <div className={classes.caption}
-                         style={{color: isColored ? colors.light : colors.vibrate,}}>{module.subline}</div>
+                         style={{color: isColored ? colors.light : colors.highlight,}}>{module.subline}</div>
                     <h1 className={classes.h1}
                         style={{color: isColored ? colors.light : colors.dark,}}>{module.headline}</h1>
                     <CustomRichText data={module.text} className={classes.p}

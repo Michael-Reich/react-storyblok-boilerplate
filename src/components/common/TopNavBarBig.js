@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Link} from 'react-router-dom';
+import {createUseStyles} from 'react-jss';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import {createUseStyles} from 'react-jss';
 
 import {colors, fonts, mixins, tools, breakpoints} from '../../tools/styles';
 import Button from './Button';
@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
     navBar: {
         padding: 26,
         zIndex: 990,
-        fontFamily: fonts.secondary,
+        fontFamily: fonts.headline,
         fontWeight: 'bold',
         fontSize: 18,
         lineHeight: '27px',
@@ -37,15 +37,15 @@ const useStyles = createUseStyles({
             fontWeight: '400 !important',
             color: `${colors.dark}!important`,
             '&:hover': {
-                opacity: 0.7
+                opacity: 0.7,
             },
             '&:after': {
-                display: 'none'
+                display: 'none',
             },
             [`@media (max-width: ${breakpoints.lgMax}px)`]: {
                 paddingLeft: '5px !important',
                 paddingRight: '5px !important',
-                textAlign: 'center'
+                textAlign: 'center',
             },
         },
         '& .dropdown-menu': {
@@ -88,7 +88,7 @@ const useStyles = createUseStyles({
             color: 'rgba(255,255,255,0.5)!important',
         },
         '&.active': {
-            color: `${colors.vibrate}!important`,
+            color: `${colors.highlight}!important`,
         },
     },
     box: {
@@ -118,7 +118,7 @@ const useStyles = createUseStyles({
     },
     navBarInner: {
         marginTop: 15,
-        marginBottom: 10
+        marginBottom: 10,
     },
     logo: {
         marginRight: 70,
@@ -139,7 +139,6 @@ const TopNavBarBig = (props) => {
     const clickBurgerMenu = (expanded) => {
         setNavExpanded(expanded);
     };
-
     const linkClick = () => {
         setNavExpanded(false);
     };
@@ -149,7 +148,7 @@ const TopNavBarBig = (props) => {
                    onToggle={(expanded) => clickBurgerMenu(expanded)}>
         <Container>
             <Link to={'/'} className={classes.logo}><img className={classes.logo} src={`/images/logo-green.png`} alt=""/></Link>
-            <Link to={'/kontakt'} className={'d-flex d-lg-none'}><Button variant={'primary'}>Kontakt aufnehmen</Button></Link>
+            <Link to={'/kontakt'} className={'d-flex d-lg-none'}><Button variant={'secondary'}>Kontakt aufnehmen</Button></Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse className={`justify-content-between align-items-center w-100`}>
                 <Nav className={`${classes.navBarInner} mx-auto`}>
@@ -189,7 +188,7 @@ const TopNavBarBig = (props) => {
                 </Nav>
             </Navbar.Collapse>
             <div className={`${classes.navBarLink} d-none d-lg-block`} style={{whiteSpace: 'nowrap'}}>
-                <Link to={'/kontakt'}><Button variant={'secondary'}>Kontakt aufnehmen</Button></Link>
+                <Link to={'/kontakt'}><Button>Kontakt aufnehmen</Button></Link>
             </div>
         </Container>
     </Navbar>;

@@ -4,9 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {connect} from 'react-redux';
 
-import {fetchBlog} from '../../../actions/blog';
+import {entityName} from '../../../entities/blog';
+import {fetchItems} from '../../../actions/blog';
 import {getMarginClasses} from '../../../tools/helper';
 import Item from '../../../scenes/Blog/Item';
+import {tools} from '../../../tools/styles';
 
 const ModuleBlogTeaser = (props) => {
 
@@ -19,37 +21,37 @@ const ModuleBlogTeaser = (props) => {
         }
     }, [props.module]);
 
-    const [blog, setBlog] = useState(props.blog);
+    const [items, setItems] = useState(props.items);
 
     const sortFn = (a, b) => new Date(b.content.date) - new Date(a.content.date);
 
     useEffect(() => {
-        if (props.blog.length > 0) {
-            let tempBlog = [];
+        if (props.items && props.items.length > 0) {
+            let tempItems = [];
 
-            tempBlog = props.blog;
-            try{tempBlog.sort(sortFn);} catch(e){}
+            tempItems = props.items;
+            try{tempItems.sort(sortFn);} catch(e){}
 
             // if (module.content && module.content.sort === 'desc') {
-            //     tempBlog.reverse();
+            //     tempItems.reverse();
             // }
-            setBlog(tempBlog);
+            setItems(tempItems);
         }
-    }, [props.blog]);
+    }, [props.items]);
 
     useEffect(() => {
-        props.fetchBlog();
+        props.fetchItems();
     }, [props.match]);
 
     return <div className={`${marginClasses}`}>
         <Container fluid={module.is_full_width}>
-            <Row className={'h-100'}>
-                {[...blog].splice(0, 3).map((item, index) => {
-                    return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
-                        <Item item={item}/>
+            {items.length > 0 && <Row className={'h-100'}>
+                {[...items].splice(0, 3).map((itm, index) => {
+                    return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
+                        <Item item={itm}/>
                     </Col>;
                 })}
-            </Row>
+            </Row>}
         </Container>
     </div>;
 
@@ -57,19 +59,19 @@ const ModuleBlogTeaser = (props) => {
 
 ModuleBlogTeaser.defaultProps = {
     module: {},
-    blog: [],
+    items: [],
 };
 
 const mapStateToProps = (state) => {
     return {
-        blog: state.blog,
+        items: state[entityName].items,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchBlog: () => {
-            dispatch(fetchBlog());
+        fetchItems: () => {
+            dispatch(fetchItems());
         },
     };
 };

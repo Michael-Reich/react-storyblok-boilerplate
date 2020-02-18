@@ -2,21 +2,20 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {createUseStyles} from 'react-jss';
-import {Link} from 'react-router-dom';
 
 import GenericNetlifyForm from '../forms/GenericNetlifyForm';
-import {breakpoints, colors, mixins} from '../../tools/styles';
+import {breakpoints, colors, mixins, tools} from '../../tools/styles';
 import Spacer from './Spacer';
 import Button from './Button';
 
 const useStyles = createUseStyles({
     col: {
         [`@media (max-width: ${breakpoints.mdMax}px)`]: {
-            marginBottom: 30,
+            marginBottom: tools.marginSmall,
         },
     },
     div: {
-        padding: 30,
+        padding: tools.padding,
         backgroundColor: colors.light,
     },
     h2: {
@@ -42,7 +41,7 @@ const KontaktForm = (props) => {
         </Col>
         {!props.plain_form && <Col lg={{span: 6, order: 2}} className={classes.col}>
             <div>
-                <img src="/images/wolfgang.jpg" alt="" className={classes.image}/>
+                <img src="//cdn.pixabay.com/photo/2014/05/26/13/32/striped-core-354528_960_720.jpg" alt="" className={classes.image}/>
                 <div className={classes.div}>
                     <h2 className={classes.h2}>Lassen Sie sich beraten!</h2>
                     <Spacer/>
@@ -51,7 +50,8 @@ const KontaktForm = (props) => {
                         unterstützen können.
                     </div>
                     <Spacer/>
-                    <a href={'https://outlook.office365.com/owa/calendar/WSUBeratungsgesellschaftmbH1@wsu-beratung.de/bookings/s/uGsPPrxZm0eYDQNJQtgevA2'} target={'_blank'}><Button variant={'secondary'}>Termin vereinbaren</Button></a>
+                    <a href={'https://outlook.office365.com/owa/calendar/WSUBeratungsgesellschaftmbH1@wsu-beratung.de/bookings/s/uGsPPrxZm0eYDQNJQtgevA2'}
+                       target={'_blank'}><Button variant={'secondary'}>Termin vereinbaren</Button></a>
                 </div>
             </div>
         </Col>}

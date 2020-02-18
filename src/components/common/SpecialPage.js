@@ -4,7 +4,7 @@ import {createUseStyles} from 'react-jss';
 import Container from 'react-bootstrap/Container';
 
 import Button from './Button';
-import {mixins} from '../../tools/styles';
+import {mixins, tools} from '../../tools/styles';
 import Spacer from './Spacer';
 
 const SpecialPage = (props) => {
@@ -26,24 +26,27 @@ const SpecialPage = (props) => {
         },
         unboxed: {
             ...mixins.unboxed,
-            marginTop: 30,
-            marginBottom: 30,
+            marginTop: tools.margin,
+            marginBottom: tools.margin,
         },
     });
 
     const classes = useStyles();
 
-    return <Container className={props.className}>
+    return <Container className={props.className} style={props.style}>
         <h1 className={classes.h1}>{caption}</h1>
         {text && <p className={classes.unboxed}>{text}</p>}
         <Spacer/>
-        <Link to={'/'}><Button variant={'primary'}>Zur Startseite</Button></Link>
+        <Link to={'/'}><Button>Zur Startseite</Button></Link>
         <Spacer/>
     </Container>;
 };
 
 SpecialPage.defaultProps = {
+    style: {},
     className: '',
+    text: '',
+    caption: '',
 };
 
 export default SpecialPage;

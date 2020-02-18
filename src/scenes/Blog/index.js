@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
+import {createUseStyles} from 'react-jss';
+import {Element, scroller} from 'react-scroll';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {createUseStyles} from 'react-jss';
 
-import CustomSpinner from '../../components/common/CustomSpinner';
-import {fetchBlogPage} from '../../actions/blogPage';
-import {fetchBlog} from '../../actions/blog';
-import {setBlogPage} from '../../actions/blogFilter';
-import {mixins, colors} from '../../tools/styles';
+import {entityName} from '../../entities/blog';
+import {fetchPageData, setPageNumber, fetchFilteredItemsRequested} from '../../actions/blog';
 import Item from './Item';
 import Filter from './Filter';
+import {mixins, tools} from '../../tools/styles';
+import CustomSpinner from '../../components/common/CustomSpinner';
 import Spacer from '../../components/common/Spacer';
 import CustomHelmet from '../../components/common/CustomHelmet';
 import ModulesWrapper from '../../components/modules/ModulesWrapper';
@@ -20,10 +20,6 @@ import CustomPagination from '../../components/common/CustomPagination';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-    },
-    p: {
-        ...mixins.introItalic,
-        color: colors.light,
     },
     pSearch: {
         ...mixins.p,
@@ -34,86 +30,97 @@ const Blog = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        props.fetchItems();
-        props.fetchPage();
+        props.fetchPageData();
     }, [props.location]);
 
+    const [pageData, setPageData] = useState({});
+    const [filter, setFilter] = useState({});
     const [items, setItems] = useState([]);
-    const [filteredItems, setFilteredItems] = useState([]);
-    const [page, setPage] = useState({});
+    const [lastRequestState, setLastRequestState] = useState({});
+    const [isRequestOngoing, setIsRequestOngoing] = useState(false);
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
-        if (props.items.length > 0) {
-            setItems(props.items);
-        }
-    }, [props.items]);
+        setFilter(props.entity.filter);
+    }, [props.entity.filter]);
 
     useEffect(() => {
-        const newFiltered = [];
-
-        [...items].map(itm => {
-            if (props.filter.filter.text) {
-                if (
-                    (!itm.name || itm.name.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.subline || itm.content.subline.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.headline || itm.content.headline.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                    &&
-                    (!itm.content || !itm.content.previewText || itm.content.previewText.toLowerCase().search(props.filter.filter.text.trim().toLowerCase()) === -1)
-                ) {
-                    return;
-                }
+        if (props.entity.pageData && props.entity.pageData.length > 0) {
+            setPageData(props.entity.pageData[0]);
+            if (props.entity.pageData[0].content && props.entity.pageData[0].content.body) {
+                setModules(props.entity.pageData[0].content.body);
             }
-            newFiltered.push(itm);
+        }
+    }, [props.entity.pageData]);
+
+    useEffect(() => {
+        setItems(props.entity.filteredItems);
+    }, [props.entity.filteredItems]);
+
+    useEffect(() => {
+        setLastRequestState(props.entity.lastRequestState);
+    }, [props.entity.lastRequestState]);
+
+    useEffect(() => {
+        setIsRequestOngoing(props.entity.isRequestOngoing);
+    }, [props.entity.isRequestOngoing]);
+
+    useEffect(() => {
+        if (filter.filter) {
+            props.fetchFilteredItemsRequested(filter.filter.text);
+        }
+    }, [filter.filter]);
+
+    const paginationOnClickHandler = (pageNumber) => {
+        scroller.scrollTo('scrollAnchor', {
+            duration: 500,
+            delay: 0,
+            offset: -113,
+            smooth: true,
         });
-
-        setFilteredItems(newFiltered);
-    }, [items, props.filter]);
-
-    useEffect(() => {
-        if (props.page.length > 0) {
-            setPage(props.page[0]);
-            if (props.page[0].content && props.page[0].content.body) {
-                setModules(props.page[0].content.body);
-            }
-        }
-    }, [props.page]);
+        props.setPageNumber(pageNumber);
+    };
 
     return <div>
-        <CustomHelmet metaFields={page.content ? page.content.metaFields : {}} page={page}/>
+        <CustomHelmet metaFields={pageData.content ? pageData.content.metaFields : {}} page={pageData}/>
         {modules.length > 0 && <ModulesWrapper modules={modules}/>}
         <Spacer/>
         <Container>
-            {page && page.content && <Row>
+            {pageData && pageData.content && <Row>
                 <Col md={9}>
-                    <h1 className={classes.h1}>{page.content.headline}</h1>
+                    <h1 className={classes.h1}>{pageData.content.headline}</h1>
                     <Spacer/>
-                    {page.content.hasSearch && <Filter filter={props.filter} pageSize={page.content.pageSize}/>}
+                    {pageData.content.hasSearch &&
+                    <Filter filter={filter.filter} pageSize={pageData.content.pageSize}/>}
                     <Spacer/>
                 </Col>
             </Row>}
 
-            {!filteredItems.length ? <Row><Col>
-                <div className={classes.pSearch}>Wir können leider keine Blogeinträge finden.</div>
-            </Col></Row> : <div>{
-                filteredItems.length > 0 && <div>
+            {isRequestOngoing && <Row><Col>
+                <CustomSpinner/><Spacer/>
+            </Col></Row>}
+
+            {items && <div>
+                <Element name="scrollAnchor"/>
+                {items.length > 0 ? <div>
                     <Row className={'h-100'}>
-                        {[...filteredItems].splice((props.filter.page - 1) * props.filter.items_per_page, props.filter.items_per_page).map((itm, index) => {
-                            return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
+                        {[...items].splice((filter.pageNumber - 1) * filter.itemsPerPage, filter.itemsPerPage).map((itm, index) => {
+                            return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                 <Item item={itm}/>
                             </Col>;
                         })}
                     </Row>
                     <Row><Col>
-                        <CustomPagination max={Math.ceil(filteredItems.length / props.filter.items_per_page)}
-                                          page={props.filter.page}
-                                          onClick={props.setPage}/>
+                        <CustomPagination max={Math.ceil(items.length / filter.itemsPerPage)}
+                                          page={filter.pageNumber}
+                                          onClick={paginationOnClickHandler}/>
                     </Col></Row>
-                </div>
-            }</div>}
-            {!items.length && <CustomSpinner/>}
+                </div> : <div>
+                    {!isRequestOngoing && <Row><Col>
+                        <div className={classes.pSearch}>Wir können leider keine Einträge finden.</div>
+                    </Col></Row>}
+                </div>}
+            </div>}
             <Spacer/>
         </Container>
     </div>;
@@ -121,21 +128,19 @@ const Blog = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.blog,
-        filter: state.blogFilter,
-        page: state.blogPage,
+        entity: state[entityName],
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchItems: () => {
-            dispatch(fetchBlog());
+        fetchFilteredItemsRequested: (search_term) => {
+            dispatch(fetchFilteredItemsRequested(search_term));
         },
-        fetchPage: () => {
-            dispatch(fetchBlogPage());
+        fetchPageData: () => {
+            dispatch(fetchPageData());
         },
-        setPage: (page) => {
-            dispatch(setBlogPage(page));
+        setPageNumber: (pageNumber) => {
+            dispatch(setPageNumber(pageNumber));
         }
     };
 };

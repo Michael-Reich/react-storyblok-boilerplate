@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {fetchDetailPages} from '../../actions/detailPages';
+import {fetchItems} from '../../actions/detailPages';
 import NavLink from './NavLink';
 
 const DetailPagesContainer = (props) => {
@@ -10,7 +10,7 @@ const DetailPagesContainer = (props) => {
         if (!props.slug) {
             return;
         }
-        props.fetchDetailPages(props.slug);
+        props.fetchItems(props.slug);
     }, [props.match.params, props.slug]);
 
     const [pages, setPages] = useState([]);
@@ -53,8 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchDetailPages: (slug) => {
-            dispatch(fetchDetailPages(slug));
+        fetchItems: (slug) => {
+            dispatch(fetchItems(slug));
         },
     };
 };

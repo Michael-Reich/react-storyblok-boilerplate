@@ -5,11 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
-import {fetchSingleBlog, fetchBlog} from '../../../actions/blog';
-import {colors, mixins} from '../../../tools/styles';
+import {entityName} from '../../../entities/blog';
+import {fetchSingleItem, fetchItems} from '../../../actions/blog';
+import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
-import {CustomRichText} from '../../../components/common/CustomRichText';
+import CustomRichText from '../../../components/common/CustomRichText';
 import Spacer from '../../../components/common/Spacer';
 import Item from '../Item';
 import BackgroundImage from '../../../components/common/BackgroundImage';
@@ -18,23 +19,23 @@ import NewsletterForm from '../../../components/common/NewsletterForm';
 const useStyles = createUseStyles({
     h1: {
         ...mixins.h1,
-        marginBottom: 15
+        marginBottom: 15,
     },
     h2: {
         ...mixins.h2,
     },
-    text: {
-        marginTop: 30
-    },
     caption: {
         ...mixins.caption,
         marginBottom: 20,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
     image: {
         width: '100%',
         maxHeight: 500,
         height: '50vh',
+    },
+    unboxed: {
+        ...mixins.unboxed,
     },
 });
 
@@ -52,7 +53,8 @@ const BlogDetail = (props) => {
 
     useEffect(() => {
         const tempOther = [];
-        props.items.map((itm) => {
+
+        props.entity.items.map((itm) => {
             if (itm.slug === props.match.params.slug) {
                 setItem(itm);
             } else {
@@ -71,7 +73,7 @@ const BlogDetail = (props) => {
         });
 
         setOther(newOther);
-    }, [props.items]);
+    }, [props.entity.items]);
 
     return <div>
         <CustomHelmet metaFields={item.content ? item.content.metaFields : {}} page={item}/>
@@ -91,7 +93,7 @@ const BlogDetail = (props) => {
                         <Spacer/>
                         <div className={classes.caption}>{item.content.subline}</div>
                         <h1 className={classes.h1}>{item.content.headline}</h1>
-                        <CustomRichText data={item.content.content}/>
+                        <CustomRichText data={item.content.content} className={classes.unboxed}/>
                         <Spacer/>
                         <NewsletterForm headline={'Verpassen Sie nichts mehr!'}/>
                     </Col>
@@ -112,7 +114,7 @@ const BlogDetail = (props) => {
                             <Spacer/>
                             <Row>
                                 {[...other].splice(0, 3).map((itm, index) => {
-                                    return <Col lg={4} md={6} key={index} style={{marginBottom: 30,}}>
+                                    return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                         <Item item={itm}/>
                                     </Col>;
                                 })}
@@ -127,16 +129,17 @@ const BlogDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.blog,
+        entity: state[entityName],
     };
 };
+
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleItem: (slug) => {
-            dispatch(fetchSingleBlog(slug));
+            dispatch(fetchSingleItem(slug));
         },
         fetchItems: () => {
-            dispatch(fetchBlog());
+            dispatch(fetchItems());
         },
     };
 };

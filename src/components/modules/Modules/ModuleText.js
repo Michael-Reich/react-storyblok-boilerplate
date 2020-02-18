@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
-import {CustomRichText} from '../../common/CustomRichText';
+import CustomRichText from '../../common/CustomRichText';
 import {getMarginClasses} from '../../../tools/helper';
 import {colors, mixins} from '../../../tools/styles';
 
@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
     },
     caption: {
         ...mixins.caption,
-        color: colors.vibrate,
+        color: colors.highlight,
     },
 });
 

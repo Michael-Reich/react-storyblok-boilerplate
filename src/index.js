@@ -6,18 +6,17 @@ import ScrollToTop from 'react-router-scroll-top';
 import {PersistGate} from 'redux-persist/integration/react';
 import TagManager from 'react-gtm-module';
 
-import './index.scss';
+import './scss/index.scss';
 
 import {store, persistor} from './store';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './tools/serviceWorker';
 import Routing from './routing';
-import TopNavBar from './components/common/TopNavBar';
 import Footer from './components/common/Footer';
 import TopNavBarBig from './components/common/TopNavBarBig';
 
-if (navigator.userAgent !== 'ReactSnap' && process.env.NODE_ENV !== 'development') {
-    // TagManager.initialize({gtmId: 'GTM-PVV5BS3'});
-}
+// if (navigator.userAgent !== 'ReactSnap' && process.env.NODE_ENV !== 'development') {
+//     TagManager.initialize({gtmId: 'GTM-PVV5BS3'});
+// }
 
 const part = <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
