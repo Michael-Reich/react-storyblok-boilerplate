@@ -112,7 +112,7 @@ const Blog = (props) => {
                     </Row>
                     <Row><Col>
                         <CustomPagination max={Math.ceil(items.length / filter.itemsPerPage)}
-                                          page={filter.pageNumber}
+                                          pageNumber={filter.pageNumber}
                                           onClick={paginationOnClickHandler}/>
                     </Col></Row>
                 </div> : <div>
