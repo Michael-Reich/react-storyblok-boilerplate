@@ -2,7 +2,7 @@ import {FETCH_CASES, FETCH_SINGLE_CASE} from '../actions/cases';
 
 const defaultState = [];
 
-const cases = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case FETCH_CASES:
@@ -29,4 +29,4 @@ const cases = (state = defaultState, action) => {
     }
 };
 
-export default cases;
+export default reducer;

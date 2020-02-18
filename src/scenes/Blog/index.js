@@ -45,13 +45,13 @@ const Blog = (props) => {
     }, [props.entity.filter]);
 
     useEffect(() => {
-        if (props.entity.page && props.entity.page.length > 0) {
-            setPageData(props.entity.page[0]);
-            if (props.entity.page[0].content && props.entity.page[0].content.body) {
-                setModules(props.entity.page[0].content.body);
+        if (props.entity.pageData && props.entity.pageData.length > 0) {
+            setPageData(props.entity.pageData[0]);
+            if (props.entity.pageData[0].content && props.entity.pageData[0].content.body) {
+                setModules(props.entity.pageData[0].content.body);
             }
         }
-    }, [props.entity.page]);
+    }, [props.entity.pageData]);
 
     useEffect(() => {
         setItems(props.entity.filteredItems);
@@ -71,14 +71,14 @@ const Blog = (props) => {
         }
     }, [filter.filter]);
 
-    const paginationOnClickHandler = (page) => {
+    const paginationOnClickHandler = (pageNumber) => {
         scroller.scrollTo('scrollAnchor', {
             duration: 500,
             delay: 0,
             offset: -113,
             smooth: true,
         });
-        props.setPageNumber(page);
+        props.setPageNumber(pageNumber);
     };
 
     return <div>
@@ -104,15 +104,15 @@ const Blog = (props) => {
                 <Element name="scrollAnchor"/>
                 {items.length > 0 ? <div>
                     <Row className={'h-100'}>
-                        {[...items].splice((filter.page - 1) * filter.items_per_page, filter.items_per_page).map((itm, index) => {
+                        {[...items].splice((filter.pageNumber - 1) * filter.itemsPerPage, filter.itemsPerPage).map((itm, index) => {
                             return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
                                 <Item item={itm}/>
                             </Col>;
                         })}
                     </Row>
                     <Row><Col>
-                        <CustomPagination max={Math.ceil(items.length / filter.items_per_page)}
-                                          page={filter.page}
+                        <CustomPagination max={Math.ceil(items.length / filter.itemsPerPage)}
+                                          page={filter.pageNumber}
                                           onClick={paginationOnClickHandler}/>
                     </Col></Row>
                 </div> : <div>

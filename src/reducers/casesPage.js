@@ -2,7 +2,7 @@ import {FETCH_CASES_PAGE} from '../actions/casesPage';
 
 const defaultState = [];
 
-const casesPage = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case FETCH_CASES_PAGE:
@@ -16,4 +16,4 @@ const casesPage = (state = defaultState, action) => {
     }
 };
 
-export default casesPage;
+export default reducer;

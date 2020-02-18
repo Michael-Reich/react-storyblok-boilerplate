@@ -19,10 +19,10 @@ const defaultState = {
     filteredItems: [],
     filter: {
         filter: {text: ''},
-        page: 1,
-        items_per_page: navigator.userAgent !== 'ReactSnap' ? 9 : ITEMS_PER_PAGE_FOR_SNAP,
+        pageNumber: 1,
+        itemsPerPage: navigator.userAgent !== 'ReactSnap' ? 9 : ITEMS_PER_PAGE_FOR_SNAP,
     },
-    page: [],
+    pageData: [],
 };
 
 const reducer = (state = defaultState, action) => {
@@ -68,7 +68,7 @@ const reducer = (state = defaultState, action) => {
             return newState;
 
         case SET_PAGE_NUMBER:
-            newState.filter.page = action.payload;
+            newState.filter.pageNumber = action.payload;
             return newState;
 
         case SET_FILTER:
@@ -76,12 +76,12 @@ const reducer = (state = defaultState, action) => {
             return newState;
 
         case SET_FILTER_ITEMS_PER_PAGE:
-            newState.filter.items_per_page = navigator.userAgent !== 'ReactSnap' ? action.payload : ITEMS_PER_PAGE_FOR_SNAP;
+            newState.filter.itemsPerPage = navigator.userAgent !== 'ReactSnap' ? action.payload : ITEMS_PER_PAGE_FOR_SNAP;
             return newState;
 
         case FETCH_PAGE_DATA:
             if (action.payload && action.payload.length > 0) {
-                newState.page = action.payload;
+                newState.pageData = action.payload;
             }
             return newState;
 

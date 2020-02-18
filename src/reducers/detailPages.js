@@ -2,7 +2,7 @@ import {FETCH_SINGLE_DETAIL_PAGE, FETCH_DETAIL_PAGES} from '../actions/detailPag
 
 const defaultState = {};
 
-const detailPages = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     const newState = {...state};
 
@@ -39,4 +39,4 @@ const detailPages = (state = defaultState, action) => {
     }
 };
 
-export default detailPages;
+export default reducer;

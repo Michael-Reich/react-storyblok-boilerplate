@@ -57,8 +57,8 @@ const mapDispatchToProps = (dispatch) => {
         setFilter: (filter) => {
             dispatch(setFilter(filter));
         },
-        setPageNumber: (page) => {
-            dispatch(setPageNumber(page));
+        setPageNumber: (pageNumber) => {
+            dispatch(setPageNumber(pageNumber));
         },
         setFilterItemsPerPage: (items) => {
             dispatch(setFilterItemsPerPage(items));

@@ -39,9 +39,9 @@ export const setFilter = (filter) => ({
     payload: filter,
 });
 
-export const setFilterItemsPerPage = (items_per_page) => ({
+export const setFilterItemsPerPage = (itemsPerPage) => ({
     type: SET_FILTER_ITEMS_PER_PAGE,
-    payload: items_per_page,
+    payload: itemsPerPage,
 });
 
 export const setPageNumber = (page) => ({

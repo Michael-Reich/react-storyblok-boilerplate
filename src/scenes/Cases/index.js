@@ -109,7 +109,7 @@ const Cases = (props) => {
             </Col></Row> : <div>{
                 filteredItems.length > 0 && <div>
                     <Element name="scrollAnchor"/>
-                    {[...filteredItems].splice((props.filter.page - 1) * props.filter.items_per_page, props.filter.items_per_page).map((itm, index) => {
+                    {[...filteredItems].splice((props.filter.page - 1) * props.filter.itemsPerPage, props.filter.itemsPerPage).map((itm, index) => {
                         return <Row key={index}>
                             <Col>
                                 <Item item={itm}/>
@@ -117,7 +117,7 @@ const Cases = (props) => {
                         </Row>;
                     })}
                     <Row><Col>
-                        <CustomPagination max={Math.ceil(filteredItems.length / props.filter.items_per_page)}
+                        <CustomPagination max={Math.ceil(filteredItems.length / props.filter.itemsPerPage)}
                                           page={props.filter.page} onClick={paginationOnClickHandler}/>
                     </Col></Row>
                 </div>}
