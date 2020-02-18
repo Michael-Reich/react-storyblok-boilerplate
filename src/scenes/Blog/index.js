@@ -8,6 +8,7 @@ import {Element, scroller} from 'react-scroll';
 
 import CustomSpinner from '../../components/common/CustomSpinner';
 import {fetchBlogPage, setBlogPage} from '../../actions/blog';
+import {FETCH_FILTERED_ITEMS_REQUESTED} from '../../actiontypes/blog';
 import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
@@ -67,8 +68,6 @@ const Blog = (props) => {
 
     useEffect(() => {
         if (filter.filter) {
-            // props.dispatch({type: 'FETCH_BLOG_FILTERED_ITEMS_REQUESTED', payload: {search_term: filter.filter.text}})
-            // props.fetchFilteredItems(filter.filter.text);
             props.fetchFilteredItemsRequested(filter.filter.text);
         }
     }, [filter.filter]);
@@ -131,7 +130,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchFilteredItemsRequested: (search_term) => {
-            dispatch({type: 'FETCH_BLOG_FILTERED_ITEMS_REQUESTED', payload: {search_term: search_term}})
+            dispatch({type: FETCH_FILTERED_ITEMS_REQUESTED, payload: {search_term: search_term}})
         },
         fetchPage: () => {
             dispatch(fetchBlogPage());
