@@ -1,21 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
+import {entitySlug} from '../../entities/pages';
+import {fetchSingleItem} from '../../actions/pages';
 import ModulesWrapper from '../../components/modules/ModulesWrapper';
 import CustomHelmet from '../../components/common/CustomHelmet';
-import {fetchSinglePage} from '../../actions/pages';
 
 const SimplePage = (props) => {
 
     const [slug, setSlug] = useState(props.slug);
     const [modules, setModules] = useState([]);
-    const [page, setPage] = useState({});
+    const [pageData, setPageData] = useState({});
 
     useEffect(() => {
         if (!slug) {
             return;
         }
-        props.fetchSinglePage(slug);
+        props.fetchSingleItem(slug);
     }, [props.location, slug]);
 
     useEffect(() => {
@@ -26,18 +27,18 @@ const SimplePage = (props) => {
         if (!slug) {
             return;
         }
-        props.pages.map((item) => {
-            if (item.slug === slug) {
-                setPage(item);
-                if (item.content && item.content.body) {
-                    setModules(item.content.body);
+        props.items.map((itm) => {
+            if (itm.slug === slug) {
+                setPageData(itm);
+                if (itm.content && itm.content.body) {
+                    setModules(itm.content.body);
                 }
             }
         });
-    }, [props.pages]);
+    }, [props.items]);
 
     return <div>
-        <CustomHelmet metaFields={page.content ? page.content.metaFields : {}} page={page}/>
+        <CustomHelmet metaFields={pageData.content ? pageData.content.metaFields : {}} page={pageData}/>
         {modules.length > 0 && <ModulesWrapper modules={modules}/>}
     </div>;
 };
@@ -48,13 +49,13 @@ SimplePage.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        pages: state.pages,
+        items: state[entitySlug],
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSinglePage: (slug) => {
-            dispatch(fetchSinglePage(slug));
+        fetchSingleItem: (slug) => {
+            dispatch(fetchSingleItem(slug));
         },
     };
 };

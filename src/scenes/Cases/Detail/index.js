@@ -67,7 +67,6 @@ const CaseDetail = (props) => {
         const tempOther = [];
 
         props.entity.items.map((itm) => {
-            console.log("itm", itm);
             if (itm.slug === props.match.params.slug) {
                 setItem(itm);
             } else {

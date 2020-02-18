@@ -1,11 +1,11 @@
-import {FETCH_SINGLE_PAGE} from '../actions/pages';
+import {FETCH_SINGLE_ITEM} from '../actiontypes/pages';
 
 const defaultState = [];
 
 const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
-        case FETCH_SINGLE_PAGE:
+        case FETCH_SINGLE_ITEM:
             if (action.payload && action.payload.data && action.payload.data.story) {
                 const newState = [];
                 [...state].map(item => {
