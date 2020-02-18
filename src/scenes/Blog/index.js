@@ -7,7 +7,7 @@ import {createUseStyles} from 'react-jss';
 import {Element, scroller} from 'react-scroll';
 
 import CustomSpinner from '../../components/common/CustomSpinner';
-import {fetchBlogPage, setBlogPage} from '../../actions/blog';
+import {fetchPageData, setPageNumber} from '../../actions/blog';
 import {FETCH_FILTERED_ITEMS_REQUESTED} from '../../actiontypes/blog';
 import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
@@ -30,12 +30,12 @@ const Blog = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        props.fetchPage();
+        props.fetchPageData();
     }, [props.location]);
 
-    const [page, setPage] = useState({});
+    const [pageData, setPageData] = useState({});
     const [filter, setFilter] = useState({});
-    const [items, setItems] = useState({});
+    const [items, setItems] = useState([]);
     const [lastRequestState, setLastRequestState] = useState({});
     const [isRequestOngoing, setIsRequestOngoing] = useState(false);
     const [modules, setModules] = useState([]);
@@ -46,7 +46,7 @@ const Blog = (props) => {
 
     useEffect(() => {
         if (props.entity.page && props.entity.page.length > 0) {
-            setPage(props.entity.page[0]);
+            setPageData(props.entity.page[0]);
             if (props.entity.page[0].content && props.entity.page[0].content.body) {
                 setModules(props.entity.page[0].content.body);
             }
@@ -65,7 +65,6 @@ const Blog = (props) => {
         setIsRequestOngoing(props.entity.isRequestOngoing);
     }, [props.entity.isRequestOngoing]);
 
-
     useEffect(() => {
         if (filter.filter) {
             props.fetchFilteredItemsRequested(filter.filter.text);
@@ -79,19 +78,20 @@ const Blog = (props) => {
             offset: -113,
             smooth: true,
         });
-        props.setPage(page);
+        props.setPageNumber(page);
     };
 
     return <div>
-        <CustomHelmet metaFields={page.content ? page.content.metaFields : {}} page={page}/>
+        <CustomHelmet metaFields={pageData.content ? pageData.content.metaFields : {}} page={pageData}/>
         {modules.length > 0 && <ModulesWrapper modules={modules}/>}
         <Spacer/>
         <Container>
-            {page && page.content && <Row>
+            {pageData && pageData.content && <Row>
                 <Col md={9}>
-                    <h1 className={classes.h1}>{page.content.headline}</h1>
+                    <h1 className={classes.h1}>{pageData.content.headline}</h1>
                     <Spacer/>
-                    {page.content.hasSearch && <Filter filter={filter.filter} pageSize={page.content.pageSize} />}
+                    {pageData.content.hasSearch &&
+                    <Filter filter={filter.filter} pageSize={pageData.content.pageSize}/>}
                     <Spacer/>
                 </Col>
             </Row>}
@@ -102,7 +102,7 @@ const Blog = (props) => {
 
             {items && <div>
                 <Element name="scrollAnchor"/>
-                {items.length > 0 && <div>
+                {items.length > 0 ? <div>
                     <Row className={'h-100'}>
                         {[...items].splice((filter.page - 1) * filter.items_per_page, filter.items_per_page).map((itm, index) => {
                             return <Col lg={4} md={6} key={index} style={{marginBottom: tools.margin,}}>
@@ -115,6 +115,10 @@ const Blog = (props) => {
                                           page={filter.page}
                                           onClick={paginationOnClickHandler}/>
                     </Col></Row>
+                </div> : <div>
+                    {!isRequestOngoing && <Row><Col>
+                        <div className={classes.pSearch}>Wir können leider keine Einträge finden.</div>
+                    </Col></Row>}
                 </div>}
             </div>}
             <Spacer/>
@@ -130,13 +134,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchFilteredItemsRequested: (search_term) => {
-            dispatch({type: FETCH_FILTERED_ITEMS_REQUESTED, payload: {search_term: search_term}})
+            dispatch({type: FETCH_FILTERED_ITEMS_REQUESTED, payload: {search_term: search_term}});
         },
-        fetchPage: () => {
-            dispatch(fetchBlogPage());
+        fetchPageData: () => {
+            dispatch(fetchPageData());
         },
-        setPage: (page) => {
-            dispatch(setBlogPage(page));
+        setPageNumber: (page) => {
+            dispatch(setPageNumber(page));
         }
     };
 };

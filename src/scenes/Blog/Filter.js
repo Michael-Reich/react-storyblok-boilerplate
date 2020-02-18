@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import {createUseStyles} from 'react-jss';
 
-import {setBlogFilter, setBlogFilterItemsPerPage, setBlogPage} from '../../actions/blog';
+import {setFilter, setFilterItemsPerPage, setPageNumber} from '../../actions/blog';
 import {mixins} from '../../tools/styles';
 import InputText from '../../components/common/InputText';
 
@@ -34,7 +34,7 @@ const BlogFilter = (props) => {
             ...props.filter,
             text: event.currentTarget.value,
         });
-        props.setPage(1);
+        props.setPageNumber(1);
     };
 
     return <div className={props.className} style={props.style}>
@@ -55,13 +55,13 @@ BlogFilter.defaultProps = {
 const mapDispatchToProps = (dispatch) => {
     return {
         setFilter: (filter) => {
-            dispatch(setBlogFilter(filter));
+            dispatch(setFilter(filter));
         },
-        setPage: (page) => {
-            dispatch(setBlogPage(page));
+        setPageNumber: (page) => {
+            dispatch(setPageNumber(page));
         },
         setFilterItemsPerPage: (items) => {
-            dispatch(setBlogFilterItemsPerPage(items));
+            dispatch(setFilterItemsPerPage(items));
         },
     };
 };

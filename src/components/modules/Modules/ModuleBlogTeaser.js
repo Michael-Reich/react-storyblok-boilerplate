@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {connect} from 'react-redux';
 
-import {fetchBlog} from '../../../actions/blog';
+import {fetchItems} from '../../../actions/blog';
 import {getMarginClasses} from '../../../tools/helper';
 import Item from '../../../scenes/Blog/Item';
 import {tools} from '../../../tools/styles';
@@ -39,7 +39,7 @@ const ModuleBlogTeaser = (props) => {
     }, [props.blog]);
 
     useEffect(() => {
-        props.fetchBlog();
+        props.fetchItems();
     }, [props.match]);
 
     return <div className={`${marginClasses}`}>
@@ -69,8 +69,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchBlog: () => {
-            dispatch(fetchBlog());
+        fetchItems: () => {
+            dispatch(fetchItems());
         },
     };
 };

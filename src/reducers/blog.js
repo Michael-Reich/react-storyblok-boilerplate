@@ -1,10 +1,10 @@
 import {
-    FETCH_BLOG,
-    FETCH_SINGLE_BLOG,
-    SET_BLOG_FILTER,
-    SET_BLOG_PAGE,
-    SET_BLOG_FILTER_ITEMS_PER_PAGE,
-    FETCH_BLOG_PAGE,
+    FETCH_ITEMS,
+    FETCH_SINGLE_ITEM,
+    SET_FILTER,
+    SET_PAGE_NUMBER,
+    SET_FILTER_ITEMS_PER_PAGE,
+    FETCH_PAGE_DATA,
     FETCH_FILTERED_ITEMS_SUCCEEDED,
     FETCH_FILTERED_ITEMS_FAILED,
     FETCH_FILTERED_ITEMS_REQUESTED
@@ -25,12 +25,12 @@ const defaultState = {
     page: [],
 };
 
-const blog = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     const newState = {...state};
 
     switch (action.type) {
-        case FETCH_BLOG:
+        case FETCH_ITEMS:
             if (action.payload) {
                 newState.items = action.payload;
             }
@@ -54,7 +54,7 @@ const blog = (state = defaultState, action) => {
             return newState;
 
 
-        case FETCH_SINGLE_BLOG:
+        case FETCH_SINGLE_ITEM:
             if (action.payload && action.payload.data && action.payload.data.story) {
                 const newStateArray = [];
                 [...state.items].map(itm => {
@@ -67,19 +67,19 @@ const blog = (state = defaultState, action) => {
             }
             return newState;
 
-        case SET_BLOG_PAGE:
+        case SET_PAGE_NUMBER:
             newState.filter.page = action.payload;
             return newState;
 
-        case SET_BLOG_FILTER:
+        case SET_FILTER:
             newState.filter.filter = action.payload;
             return newState;
 
-        case SET_BLOG_FILTER_ITEMS_PER_PAGE:
+        case SET_FILTER_ITEMS_PER_PAGE:
             newState.filter.items_per_page = navigator.userAgent !== 'ReactSnap' ? action.payload : ITEMS_PER_PAGE_FOR_SNAP;
             return newState;
 
-        case FETCH_BLOG_PAGE:
+        case FETCH_PAGE_DATA:
             if (action.payload && action.payload.length > 0) {
                 newState.page = action.payload;
             }
@@ -90,4 +90,4 @@ const blog = (state = defaultState, action) => {
     }
 };
 
-export default blog;
+export default reducer;

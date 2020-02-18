@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
-import {fetchSingleBlog, fetchBlog} from '../../../actions/blog';
+import {fetchSingleItem, fetchItems} from '../../../actions/blog';
 import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
@@ -135,10 +135,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSingleItem: (slug) => {
-            dispatch(fetchSingleBlog(slug));
+            dispatch(fetchSingleItem(slug));
         },
         fetchItems: () => {
-            dispatch(fetchBlog());
+            dispatch(fetchItems());
         },
     };
 };
