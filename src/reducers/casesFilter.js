@@ -5,10 +5,10 @@ const ITEMS_PER_PAGE_FOR_SNAP = 1000;
 const defaultState = {
     filter: {text: ''},
     page: 1,
-    items_per_page: navigator.userAgent !== 'ReactSnap' ? 9 : ITEMS_PER_PAGE_FOR_SNAP,
+    itemsPerPage: navigator.userAgent !== 'ReactSnap' ? 9 : ITEMS_PER_PAGE_FOR_SNAP,
 };
 
-const casesFilter = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
     const newState = {...state};
 
     switch (action.type) {
@@ -21,7 +21,7 @@ const casesFilter = (state = defaultState, action) => {
             return newState;
 
         case SET_CASES_FILTER_ITEMS_PER_PAGE:
-            newState.items_per_page = navigator.userAgent !== 'ReactSnap' ? action.payload : ITEMS_PER_PAGE_FOR_SNAP;
+            newState.itemsPerPage = navigator.userAgent !== 'ReactSnap' ? action.payload : ITEMS_PER_PAGE_FOR_SNAP;
             return newState;
 
         default:
@@ -29,4 +29,4 @@ const casesFilter = (state = defaultState, action) => {
     }
 };
 
-export default casesFilter;
+export default reducer;

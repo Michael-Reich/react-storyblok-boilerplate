@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import {createUseStyles} from 'react-jss';
 
-import {setBlogFilter, setBlogFilterItemsPerPage, setBlogPage} from '../../actions/blogFilter';
+import {setFilter, setFilterItemsPerPage, setPageNumber} from '../../actions/blog';
 import {mixins} from '../../tools/styles';
 import InputText from '../../components/common/InputText';
 
@@ -24,20 +24,24 @@ const BlogFilter = (props) => {
     }, [props.pageSize]);
 
     const changeTextHandler = (event) => {
+        let newText = '';
+
+        if (event.currentTarget.value) {
+            newText = event.currentTarget.value;
+        }
+
         props.setFilter({
-            ...props.filter.filter,
+            ...props.filter,
             text: event.currentTarget.value,
         });
-        props.setPage(1);
+        props.setPageNumber(1);
     };
 
     return <div className={props.className} style={props.style}>
         <Form onSubmit={(e) => e.preventDefault()}>
-            <Form.Group>
-                <InputText className={classes.p} type="text" value={props.filter.filter.text}
-                              onChange={changeTextHandler}
-                              placeholder={'Suche starten'}/>
-            </Form.Group>
+                <InputText className={classes.p} type="text" value={props.filter.text}
+                           onChange={changeTextHandler}
+                           placeholder={'Suche starten'}/>
         </Form>
     </div>;
 };
@@ -51,13 +55,13 @@ BlogFilter.defaultProps = {
 const mapDispatchToProps = (dispatch) => {
     return {
         setFilter: (filter) => {
-            dispatch(setBlogFilter(filter));
+            dispatch(setFilter(filter));
         },
-        setPage: (page) => {
-            dispatch(setBlogPage(page));
+        setPageNumber: (pageNumber) => {
+            dispatch(setPageNumber(pageNumber));
         },
         setFilterItemsPerPage: (items) => {
-            dispatch(setBlogFilterItemsPerPage(items));
+            dispatch(setFilterItemsPerPage(items));
         },
     };
 };

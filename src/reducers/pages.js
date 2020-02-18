@@ -2,7 +2,7 @@ import {FETCH_SINGLE_PAGE} from '../actions/pages';
 
 const defaultState = [];
 
-const pages = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case FETCH_SINGLE_PAGE:
@@ -23,4 +23,4 @@ const pages = (state = defaultState, action) => {
     }
 };
 
-export default pages;
+export default reducer;

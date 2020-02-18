@@ -7,9 +7,9 @@ export const setCasesFilter = (filter) => ({
     payload: filter,
 });
 
-export const setCasesFilterItemsPerPage = (items_per_page) => ({
+export const setCasesFilterItemsPerPage = (itemsPerPage) => ({
     type: SET_CASES_FILTER_ITEMS_PER_PAGE,
-    payload: items_per_page,
+    payload: itemsPerPage,
 });
 
 export const setCasesPage = (page) => ({
