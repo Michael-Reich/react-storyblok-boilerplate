@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {createUseStyles} from 'react-jss';
 
+import {entityName} from '../../../entities/blog';
 import {fetchSingleItem, fetchItems} from '../../../actions/blog';
 import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
@@ -128,7 +129,7 @@ const BlogDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        entity: state.blog,
+        entity: state[entityName],
     };
 };
 

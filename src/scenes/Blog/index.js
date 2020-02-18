@@ -140,8 +140,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchPageData: () => {
             dispatch(fetchPageData());
         },
-        setPageNumber: (page) => {
-            dispatch(setPageNumber(page));
+        setPageNumber: (pageNumber) => {
+            dispatch(setPageNumber(pageNumber));
         }
     };
 };
