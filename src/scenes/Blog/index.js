@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
+import {createUseStyles} from 'react-jss';
+import {Element, scroller} from 'react-scroll';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {createUseStyles} from 'react-jss';
-import {Element, scroller} from 'react-scroll';
 
-import CustomSpinner from '../../components/common/CustomSpinner';
+import {entityName} from '../../entities/blog';
 import {fetchPageData, setPageNumber} from '../../actions/blog';
 import {FETCH_FILTERED_ITEMS_REQUESTED} from '../../actiontypes/blog';
-import {mixins, tools} from '../../tools/styles';
 import Item from './Item';
 import Filter from './Filter';
+import {mixins, tools} from '../../tools/styles';
+import CustomSpinner from '../../components/common/CustomSpinner';
 import Spacer from '../../components/common/Spacer';
 import CustomHelmet from '../../components/common/CustomHelmet';
 import ModulesWrapper from '../../components/modules/ModulesWrapper';
@@ -128,7 +129,7 @@ const Blog = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        entity: state.blog,
+        entity: state[entityName],
     };
 };
 const mapDispatchToProps = (dispatch) => {

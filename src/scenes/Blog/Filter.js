@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import {createUseStyles} from 'react-jss';
