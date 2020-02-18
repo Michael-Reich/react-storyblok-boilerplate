@@ -7,6 +7,7 @@ import {
     SET_PAGE_NUMBER,
     SET_FILTER_ITEMS_PER_PAGE,
     FETCH_PAGE_DATA,
+    FETCH_FILTERED_ITEMS_REQUESTED,
 } from '../actiontypes/blog';
 
 export const fetchItems = () => {
@@ -20,6 +21,13 @@ export const fetchItems = () => {
     return {
         type: FETCH_ITEMS,
         payload: request,
+    };
+};
+
+export const fetchFilteredItemsRequested = (search_term) => {
+    return {
+        type: FETCH_FILTERED_ITEMS_REQUESTED,
+        payload: {search_term: search_term}
     };
 };
 

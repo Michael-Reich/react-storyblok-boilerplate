@@ -7,9 +7,9 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import {forms, mixins} from '../../tools/styles';
 import Button from '../../components/common/Button';
 import CustomSpinner from '../../components/common/CustomSpinner';
-import {forms, mixins} from '../../tools/styles';
 import Spacer from '../../components/common/Spacer';
 
 const useStyles = createUseStyles({

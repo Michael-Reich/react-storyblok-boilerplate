@@ -47,7 +47,7 @@ const useStyles = createUseStyles({
     },
 });
 
-export const CustomRichText = (props) => {
+const CustomRichText = (props) => {
     const classes = useStyles();
     return props.data ? <div className={`${classes.text} ${props.className}`} dangerouslySetInnerHTML={createMarkup(props.data)} style={props.style}/> : null;
 };
@@ -57,3 +57,5 @@ CustomRichText.defaultProps = {
     style: {},
     data: undefined,
 };
+
+export default CustomRichText

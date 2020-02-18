@@ -10,7 +10,7 @@ import {fetchSingleItem, fetchItems} from '../../../actions/blog';
 import {colors, mixins, tools} from '../../../tools/styles';
 import SocialShare from '../../../components/common/SocialShare';
 import CustomHelmet from '../../../components/common/CustomHelmet';
-import {CustomRichText} from '../../../components/common/CustomRichText';
+import CustomRichText from '../../../components/common/CustomRichText';
 import Spacer from '../../../components/common/Spacer';
 import Item from '../Item';
 import BackgroundImage from '../../../components/common/BackgroundImage';

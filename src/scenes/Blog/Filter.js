@@ -24,12 +24,6 @@ const BlogFilter = (props) => {
     }, [props.pageSize]);
 
     const changeTextHandler = (event) => {
-        let newText = '';
-
-        if (event.currentTarget.value) {
-            newText = event.currentTarget.value;
-        }
-
         props.setFilter({
             ...props.filter,
             text: event.currentTarget.value,

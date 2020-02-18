@@ -6,8 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormCheck from 'react-bootstrap/FormCheck';
 
-import Button from '../common/Button';
 import {colors, forms, mixins} from '../../tools/styles';
+import Button from '../common/Button';
 import Spacer from '../common/Spacer';
 
 const useStyles = createUseStyles({
