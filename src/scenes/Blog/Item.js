@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {createUseStyles} from 'react-jss';
 import {Link} from 'react-router-dom';
 
+import {entityFrontendSlug} from '../../entities/blog';
 import {colors, mixins, tools} from '../../tools/styles';
 import Spacer from '../../components/common/Spacer';
 import Button from '../../components/common/Button';
@@ -52,7 +53,7 @@ const BlogItem = (props) => {
     }, [props.item]);
 
     return item.content ? <div className={`${classes.div} ${props.className}`} style={props.style}>
-        <Link to={`/blog/${item.slug}`}>
+        <Link to={`/${entityFrontendSlug}/${item.slug}`}>
             <BackgroundImage image={item.content.image} className={classes.image}/>
         </Link>
         <div className={classes.text}>
@@ -64,7 +65,7 @@ const BlogItem = (props) => {
                 </div>
                 <Spacer/>
             </div>}
-            <Link to={`/blog/${item.slug}`} className={classes.cta}>
+            <Link to={`/${entityFrontendSlug}/${item.slug}`} className={classes.cta}>
                 <Button variant={'secondary'}>Mehr erfahren</Button>
             </Link>
         </div>
