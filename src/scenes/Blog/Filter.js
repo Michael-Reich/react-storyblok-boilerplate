@@ -33,9 +33,10 @@ const BlogFilter = (props) => {
 
     return <div className={props.className} style={props.style}>
         <Form onSubmit={(e) => e.preventDefault()}>
-                <InputText className={classes.p} type="text" value={props.filter.text}
-                           onChange={changeTextHandler}
-                           placeholder={'Suche starten'}/>
+            <InputText className={classes.p} type="text" value={props.filter.text}
+                       onChange={changeTextHandler}
+                       placeholder={'Suche starten'}
+                       isLoading={props.isLoading}/>
         </Form>
     </div>;
 };
@@ -44,6 +45,7 @@ BlogFilter.defaultProps = {
     className: '',
     style: {},
     filter: {},
+    isLoading: false,
 };
 
 const mapDispatchToProps = (dispatch) => {
