@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter, Switch, Route} from 'react-router-dom';
 
+import Newsletter from '../scenes/Newsletter';
 import Blog from '../scenes/Blog';
 import BlogDetail from '../scenes/Blog/Detail';
 import Cases from '../scenes/Cases';
@@ -13,6 +14,7 @@ import SimpleDetailPagesHub from '../components/common/SimpleDetailPagesHub';
 const Routing = (props) => {
 
     return <Switch>
+        <Route path="/nl" component={Newsletter}/>
         <Route path="/blog/:slug" component={BlogDetail}/>
         <Route path="/blog" component={Blog}/>
         <Route path="/cases/:slug" component={CaseDetail}/>
