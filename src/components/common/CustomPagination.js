@@ -5,10 +5,6 @@ import Button from '../../components/common/Button';
 
 const useStyles = createUseStyles({
     button: {
-        borderRadius: `60px!important`,
-        padding: `10px!important`,
-        height: 50,
-        width: 50,
         display: 'inline-block',
         '& + &': {
             marginLeft: 10,
