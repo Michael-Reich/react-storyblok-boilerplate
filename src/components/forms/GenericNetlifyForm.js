@@ -11,6 +11,7 @@ import {forms, mixins} from '../../tools/styles';
 import Button from '../../components/common/Button';
 import CustomSpinner from '../../components/common/CustomSpinner';
 import Spacer from '../../components/common/Spacer';
+import CustomCheckBox from '../common/CustomCheckBox';
 
 const useStyles = createUseStyles({
     h2: {
@@ -55,6 +56,7 @@ const GenericNetlifyForm = (props) => {
     const [company, setCompany] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [checked, setChecked] = useState(false);
 
     const [checkboxActive, setCheckboxActive] = useState(true);
 
@@ -135,8 +137,8 @@ const GenericNetlifyForm = (props) => {
                                 <Form.Group
                                     className={`${classes.dsgvo} ${checkboxActive ? '' : 'hidden'}`}>
                                     <FormCheck>
-                                        <FormCheck.Input className={classes.checkBox} type="checkbox"
-                                                         style={{marginTop: 6}} required/>
+                                        <CustomCheckBox className={classes.checkBox} type="checkbox" name={'dsgvo'}
+                                                        style={{marginTop: 6}} checked={checked} onChange={()=>setChecked(!checked)} required/>
                                         <FormCheck.Label className={classes.checkBox} style={{marginLeft: 10}}>
                                             Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur
                                             Beantwortung meiner Anfrage erhoben und verarbeitet werden. Detailierte
