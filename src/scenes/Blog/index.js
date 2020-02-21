@@ -91,14 +91,10 @@ const Blog = (props) => {
                     <h1 className={classes.h1}>{pageData.content.headline}</h1>
                     <Spacer/>
                     {pageData.content.hasSearch &&
-                    <Filter filter={filter.filter} pageSize={pageData.content.pageSize}/>}
+                    <Filter filter={filter.filter} pageSize={pageData.content.pageSize} isLoading={isRequestOngoing}/>}
                     <Spacer/>
                 </Col>
             </Row>}
-
-            {isRequestOngoing && <Row><Col>
-                <CustomSpinner/><Spacer/>
-            </Col></Row>}
 
             {items && <div>
                 <Element name="scrollAnchor"/>
@@ -112,7 +108,7 @@ const Blog = (props) => {
                     </Row>
                     <Row><Col>
                         <CustomPagination max={Math.ceil(items.length / filter.itemsPerPage)}
-                                          page={filter.pageNumber}
+                                          pageNumber={filter.pageNumber}
                                           onClick={paginationOnClickHandler}/>
                     </Col></Row>
                 </div> : <div>

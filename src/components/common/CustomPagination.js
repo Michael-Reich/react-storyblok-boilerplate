@@ -5,10 +5,6 @@ import Button from '../../components/common/Button';
 
 const useStyles = createUseStyles({
     button: {
-        borderRadius: `60px!important`,
-        padding: `10px!important`,
-        height: 50,
-        width: 50,
         display: 'inline-block',
         '& + &': {
             marginLeft: 10,
@@ -17,19 +13,19 @@ const useStyles = createUseStyles({
 });
 
 const CustomPagination = (props) => {
-    const [page, setPage] = useState(props.page);
+    const [pageNumber, setPageNumber] = useState(props.pageNumber);
     const classes = useStyles();
     useEffect(() => {
-        setPage(props.page);
-    }, [props.page]);
+        setPageNumber(props.pageNumber);
+    }, [props.pageNumber]);
 
-    const changePageHandler = (event, page) => {
+    const changePageHandler = (event, pageNumber) => {
         event.preventDefault();
-        props.onClick(page);
+        props.onClick(pageNumber);
     };
 
     const Items = () => {
-        let active = page;
+        let active = pageNumber;
         const items = [];
 
         for (let number = 1; number <= props.max; number++) {
@@ -45,9 +41,9 @@ const CustomPagination = (props) => {
 };
 
 CustomPagination.defaultProps = {
-    page: 1,
+    pageNumber: 1,
     max: 1,
-    onClick: (page) => {
+    onClick: (pageNumber) => {
     }
 };
 

@@ -35,7 +35,8 @@ const CasesFilter = (props) => {
         <Form onSubmit={(e) => e.preventDefault()}>
             <InputText className={classes.p} type="text" value={props.filter.text}
                        onChange={changeTextHandler}
-                       placeholder={'Suche starten'}/>
+                       placeholder={'Suche starten'}
+                       isLoading={props.isLoading}/>
         </Form></div>;
 };
 
@@ -43,6 +44,7 @@ CasesFilter.defaultProps = {
     className: '',
     style: {},
     filter: {},
+    isLoading: false,
 };
 
 const mapDispatchToProps = (dispatch) => {

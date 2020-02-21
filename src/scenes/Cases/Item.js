@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import {createUseStyles} from 'react-jss';
 import {Link} from 'react-router-dom';
 
+import {entityFrontendSlug} from '../../entities/cases';
 import {colors, mixins, tools} from '../../tools/styles';
 import Button from '../../components/common/Button';
 import BackgroundImage from '../../components/common/BackgroundImage';
@@ -48,7 +49,7 @@ const CaseItem = (props) => {
     return item.content ? <div className={`${classes.div} ${props.className}`} style={props.style}>
         <Row>
             <Col md={4}>
-                <Link to={`/cases/${item.slug}`}>
+                <Link to={`/${entityFrontendSlug}/${item.slug}`}>
                     <BackgroundImage image={item.content.image} className={classes.image}/>
                 </Link>
             </Col>
@@ -60,7 +61,7 @@ const CaseItem = (props) => {
                         {item.content.previewText}
                     </div>
                     <Spacer/>
-                    <Link to={`/cases/${item.slug}`}>
+                    <Link to={`/${entityFrontendSlug}/${item.slug}`}>
                         <Button variant={'secondary'}>Mehr erfahren</Button>
                     </Link>
                     <CustomImage image={item.content.companyLogo}/>
