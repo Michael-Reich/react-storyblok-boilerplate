@@ -19,8 +19,8 @@ const CustomHelmet = (props) => {
         <Helmet>
             <meta name="theme-color" content={`${colors.highlight}`}/>
             <title>{`${metaFields.title || page.name} | ${title}`}</title>
-            {metaFields.title && <meta name="title" content={`${metaFields.title || page.name}`}/>}
-            {metaFields.title && <meta property="og:title" content={`${metaFields.title || page.name}`}/>}
+            <meta name="title" content={`${metaFields.title || page.name}`}/>
+            <meta property="og:title" content={`${metaFields.title || page.name}`}/>
             {metaFields.description && <meta name="description" content={`${metaFields.description}`}/>}
             {metaFields.description && <meta property="og:description" content={metaFields.description}/>}
         </Helmet>
