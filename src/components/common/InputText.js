@@ -32,6 +32,13 @@ const InputText = (props) => {
 
     const textInput = useRef();
     const [text, setText] = useState(props.value);
+    const [pProps, setProps] = useState({});
+
+    useEffect(() => {
+        const tempProps = {...props};
+        delete tempProps.isLoading;
+        setProps(tempProps);
+    }, [props]);
 
     useEffect(() => {
         setText(props.value);
@@ -46,10 +53,11 @@ const InputText = (props) => {
     };
 
     return <div className={classes.div}>
-        <Form.Control {...props} value={text} ref={textInput}/>
+        <Form.Control {...pProps} value={text} ref={textInput}/>
         {props.isLoading ?
             <FontAwesomeIcon icon={faSpinner} className={`${classes.icon} fa-spin`}/>
-            : <span>{text && <FontAwesomeIcon icon={faTimes} onClick={resetText} className={`${classes.cta} ${classes.icon}`}/>}</span>
+            : <span>{text &&
+            <FontAwesomeIcon icon={faTimes} onClick={resetText} className={`${classes.cta} ${classes.icon}`}/>}</span>
         }
     </div>;
 };
@@ -58,6 +66,7 @@ InputText.defaultProps = {
     value: '',
     className: '',
     isLoading: false,
+    onChange: ()=>{},
 };
 
 export default InputText;

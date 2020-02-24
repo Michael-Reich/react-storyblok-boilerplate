@@ -9,6 +9,7 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import {colors, forms, mixins} from '../../tools/styles';
 import Button from '../common/Button';
 import Spacer from '../common/Spacer';
+import CustomCheckBox from '../common/CustomCheckBox';
 
 const useStyles = createUseStyles({
     label: {
@@ -49,6 +50,8 @@ const GenericCleverreachForm = (props) => {
         [props.formNameId]: '',
         email: '',
     });
+
+    const [checked, setChecked] = useState(false);
 
     const [checkboxActive, setCheckboxActive] = useState(false);
 
@@ -92,6 +95,8 @@ const GenericCleverreachForm = (props) => {
                 <Col>
                     <Form.Group controlId="dsgvo" className={`${classes.dsgvo} ${checkboxActive ? '' : 'hidden'}`}>
                         <FormCheck>
+                            <CustomCheckBox className={classes.checkBox} type="checkbox" name={'dsgvo'}
+                                            style={{marginTop: 6}} checked={checked} onChange={()=>setChecked(!checked)} required/>
                             <FormCheck.Input type="checkbox" required/>
                             <FormCheck.Label className={classes.p}><small>Ich
                                 stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage
