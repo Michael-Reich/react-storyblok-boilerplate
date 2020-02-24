@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import Form from 'react-bootstrap/Form';
 import {createUseStyles} from 'react-jss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSpinner, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faSpinner, faTimes, faCheck, faExclamationCircle} from '@fortawesome/free-solid-svg-icons';
 
 import {colors, tools} from '../../tools/styles';
 
@@ -10,9 +10,14 @@ const useStyles = createUseStyles({
     spinner: {},
     icon: {
         position: 'absolute',
-        top: 15,
-        right: 20,
+        top: 13,
         color: colors.dark,
+    },
+    iconRight: {
+        right: 15,
+    },
+    iconLeft: {
+        left: 15,
     },
     cta: {
         cursor: 'pointer',
@@ -23,11 +28,10 @@ const useStyles = createUseStyles({
     },
     div: {
         position: 'relative',
-    }
+    },
 });
 
 const InputText = (props) => {
-
     const classes = useStyles();
 
     const textInput = useRef();
@@ -36,7 +40,7 @@ const InputText = (props) => {
 
     useEffect(() => {
         const tempProps = {...props};
-        delete tempProps.isLoading;
+        delete tempProps.loading;
         setProps(tempProps);
     }, [props]);
 
@@ -53,20 +57,29 @@ const InputText = (props) => {
     };
 
     return <div className={classes.div}>
-        <Form.Control {...pProps} value={text} ref={textInput} onChange={props.onChange}/>
-        {props.isLoading ?
-            <FontAwesomeIcon icon={faSpinner} className={`${classes.icon} fa-spin`}/>
-            : <span>{text &&
-            <FontAwesomeIcon icon={faTimes} onClick={resetText} className={`${classes.cta} ${classes.icon}`}/>}</span>
-        }
+        <Form.Control {...pProps} value={text} ref={textInput} onChange={props.onChange} style={{
+            paddingLeft: 45,
+            paddingRight: 45
+        }}/>
+        {text && <FontAwesomeIcon icon={faTimes} onClick={resetText}
+                                  className={`${classes.cta} ${classes.icon} ${classes.iconRight}`}/>}
+        {props.loading ? <FontAwesomeIcon icon={faSpinner} className={`${classes.icon} ${classes.iconLeft} fa-spin`}/> :
+            <span>
+            {text && props.success === true &&
+            <FontAwesomeIcon icon={faCheck} className={`${classes.icon} ${classes.iconLeft}`}/>}
+                {text && props.success === false &&
+                <FontAwesomeIcon icon={faExclamationCircle} className={`${classes.icon} ${classes.iconLeft}`}/>}
+        </span>}
     </div>;
 };
 
 InputText.defaultProps = {
     value: '',
     className: '',
-    isLoading: false,
-    onChange: ()=>{},
+    loading: false,
+    success: undefined,
+    onChange: () => {
+    },
 };
 
 export default InputText;
