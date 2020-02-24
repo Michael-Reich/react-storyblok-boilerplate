@@ -53,7 +53,7 @@ const InputText = (props) => {
     };
 
     return <div className={classes.div}>
-        <Form.Control {...pProps} value={text} ref={textInput}/>
+        <Form.Control {...pProps} value={text} ref={textInput} onChange={props.onChange}/>
         {props.isLoading ?
             <FontAwesomeIcon icon={faSpinner} className={`${classes.icon} fa-spin`}/>
             : <span>{text &&
