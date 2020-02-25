@@ -7,24 +7,22 @@ const CustomHelmet = (props) => {
     const [metaFields, setMetaFields] = useState({});
     const [page, setPage] = useState({});
 
-    useEffect(() => {
-        setMetaFields(props.metaFields);
-    }, [props.metaFields]);
+    const [metaTitle, setMetaTitle] = useState('');
 
     useEffect(() => {
         setPage(props.page);
-    }, [props.page]);
+        setMetaFields(props.metaFields);
+        setMetaTitle(metaFields.title || props.page.name || '')
+    }, [props.metaFields, props.page]);
 
-    return <div>
-        <Helmet>
-            <meta name="theme-color" content={`${colors.highlight}`}/>
-            <title>{`${metaFields.title || page.name} | ${title}`}</title>
-            <meta name="title" content={`${metaFields.title || page.name}`}/>
-            <meta property="og:title" content={`${metaFields.title || page.name}`}/>
-            {metaFields.description && <meta name="description" content={`${metaFields.description}`}/>}
-            {metaFields.description && <meta property="og:description" content={metaFields.description}/>}
-        </Helmet>
-    </div>;
+    return <Helmet>
+        <meta name="theme-color" content={`${colors.highlight}`}/>
+        <title>{`${metaTitle && `${metaTitle} | `} ${title}`}</title>
+        <meta name="title" content={`${metaTitle && `${metaTitle} | `} ${title}`}/>
+        <meta property="og:title" content={`${metaTitle && `${metaTitle} | `} ${title}`}/>
+        {metaFields.description && <meta name="description" content={`${metaFields.description}`}/>}
+        {metaFields.description && <meta property="og:description" content={metaFields.description}/>}
+    </Helmet>;
 };
 
 CustomHelmet.defaultProps = {
