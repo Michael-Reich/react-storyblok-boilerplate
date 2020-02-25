@@ -55,11 +55,17 @@ const text = {
     color: colors.dark,
     backgroundColor: 'transparent',
     transition: tools.transition,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 0,
+    paddingRight: 0,
     '&:hover': {
         color: colors.light,
         backgroundColor: colors.highlight,
+    },
+    [`@media (max-width: ${breakpoints.mdMax}px)`]: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 0,
+        paddingRight: 0,
     },
 };
 
@@ -70,11 +76,17 @@ const textActive = {
     color: colors.highlight,
     backgroundColor: 'transparent',
     transition: tools.transition,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 0,
+    paddingRight: 0,
     '&:hover': {
         color: colors.light,
         backgroundColor: colors.highlight,
+    },
+    [`@media (max-width: ${breakpoints.mdMax}px)`]: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 0,
+        paddingRight: 0,
     },
 };
 
