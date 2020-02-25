@@ -5,12 +5,9 @@ import {title} from '../../tools/strings';
 
 const CustomHelmet = (props) => {
     const [metaFields, setMetaFields] = useState({});
-    const [page, setPage] = useState({});
-
     const [metaTitle, setMetaTitle] = useState('');
 
     useEffect(() => {
-        setPage(props.page);
         setMetaFields(props.metaFields);
         setMetaTitle(metaFields.title || props.page.name || '')
     }, [props.metaFields, props.page]);
