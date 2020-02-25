@@ -9,7 +9,7 @@ const CustomHelmet = (props) => {
 
     useEffect(() => {
         setMetaFields(props.metaFields);
-        setMetaTitle(metaFields.title || props.page.name || '')
+        setMetaTitle(props.metaFields.title || props.page.name || '')
     }, [props.metaFields, props.page]);
 
     return <Helmet>
