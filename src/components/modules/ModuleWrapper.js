@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 import ModuleIntro from './Modules/ModuleIntro';
 import ModuleImageText from './Modules/ModuleImageText';
@@ -10,58 +10,68 @@ import ModuleContact from './Modules/ModuleContact';
 import ModuleCardExpand from './Modules/ModuleCardExpand';
 import ModuleLogos from './Modules/ModuleLogos';
 import ModuleText from './Modules/ModuleText';
+import ModuleImages from './Modules/ModuleImages';
 import ModuleBlogTeaser from './Modules/ModuleBlogTeaser';
 import ModuleCaseTeaser from './Modules/ModuleCaseTeaser';
 
 const ModuleWrapper = (props) => {
 
-    const [module, setModule] = useState(props.module);
-    useEffect(() => {
-        if (props.module) {
-            setModule(props.module);
-        }
-    }, [props.module]);
-
-    if (module && module.component) {
-        switch (module.component) {
+    if (props.module && props.module.component) {
+        switch (props.module.component) {
             case 'module_intro':
-                return <ModuleIntro module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleIntro module={props.module} className={props.className} style={props.style}
+                                    payload={props.payload}/>;
 
             case 'module_imageText':
-                return <ModuleImageText module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleImageText module={props.module} className={props.className} style={props.style}
+                                        payload={props.payload}/>;
 
             case 'module_boxes':
-                return <ModuleBoxes module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleBoxes module={props.module} className={props.className} style={props.style}
+                                    payload={props.payload}/>;
+
+            case 'module_images':
+                return <ModuleImages module={props.module} className={props.className} style={props.style}
+                                     payload={props.payload}/>;
 
             case 'module_projectTeaser':
-                return <ModuleProjectTeaser module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleProjectTeaser module={props.module} className={props.className} style={props.style}
+                                            payload={props.payload}/>;
 
             case 'module_contact':
-                return <ModuleContact module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleContact module={props.module} className={props.className} style={props.style}
+                                      payload={props.payload}/>;
 
             case 'module_cardExpand':
-                return <ModuleCardExpand module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleCardExpand module={props.module} className={props.className} style={props.style}
+                                         payload={props.payload}/>;
 
             case 'module_logos':
-                return <ModuleLogos module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleLogos module={props.module} className={props.className} style={props.style}
+                                    payload={props.payload}/>;
 
             case 'module_text':
-                return <ModuleText module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleText module={props.module} className={props.className} style={props.style}
+                                   payload={props.payload}/>;
 
             case 'module_blog_teaser':
-                return <ModuleBlogTeaser module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleBlogTeaser module={props.module} className={props.className} style={props.style}
+                                         payload={props.payload}/>;
 
             case 'module_case_teaser':
-                return <ModuleCaseTeaser module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ModuleCaseTeaser module={props.module} className={props.className} style={props.style}
+                                         payload={props.payload}/>;
 
             case 'component_box':
-                return <ComponentBox module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ComponentBox module={props.module} className={props.className} style={props.style}
+                                     payload={props.payload}/>;
 
             case 'component_text':
-                return <ComponentText module={module} className={props.className} style={props.style} payload={props.payload}/>;
+                return <ComponentText module={props.module} className={props.className} style={props.style}
+                                      payload={props.payload}/>;
 
             default:
-                return <div>Module missing: {`"${module.component}"`}</div>;
+                return <div>Module missing: {`"${props.module.component}"`}</div>;
         }
     } else {
         return null;
