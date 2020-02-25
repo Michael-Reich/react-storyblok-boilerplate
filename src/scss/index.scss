@@ -28,6 +28,11 @@ body {
   max-width: 1280px;
 }
 
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 .grecaptcha-badge {
     display: none !important;
 }
