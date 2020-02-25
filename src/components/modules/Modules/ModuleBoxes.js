@@ -61,7 +61,7 @@ const ModuleBoxes = (props) => {
             <div className={'d-none d-md-block'}>
                 {module.boxes && module.boxes.length > 0 && <Row>
                     {module.boxes.map((item, index) => {
-                        return <div className={`col ${boxBootstrapClasses}`} key={index}>
+                        return <div className={`${boxBootstrapClasses ||'col'}`} key={index}>
                             <ModuleWrapper module={item} payload={{style: module.style}}/>
                         </div>;
                     })}

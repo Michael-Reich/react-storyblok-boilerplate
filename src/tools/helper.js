@@ -15,7 +15,7 @@ const getBootstrapColClasses = (module, key = 'box_bootstrap_classes') => {
     let temp = '';
     if (module && module[key]) {
         if (module[key].xsmall) {
-            temp += `col-xs-${module[key].xsmall}`;
+            temp += `col-${module[key].xsmall}`;
         }
         if (module[key]['small'] && typeof module[key]['small'] === 'string') {
             temp += ` col-sm-${module[key]['small']}`;
